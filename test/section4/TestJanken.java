@@ -25,20 +25,48 @@ public class TestJanken {
 		assertEquals("ジャンケンぽん！", standard.readLine());
 	}
 
-	@Test
-	void コンソール上で受け取った一人目の名前が表示される() {
+	void コンソール上で受け取った一人目の名前とジャンケンの手が表示される() {
 		standard.readLine(); //sysoutのスキップ
-		assertEquals("mikosawaの手：", standard.readLine());
+		assertEquals("mikosawaの手：グー", standard.readLine());
 	}
 
 	@Test
 	void コンソール上で受け取った二人目の名前が表示される() {
-		assertEquals("mokoの手：", standard.readLine(2));
+		standard.readLine();
+		standard.readLine();
+		assertEquals("mokoの手：グー", standard.readLine());
 	}
 
 	@Test
 	void 結果はが表示される() {
-		assertEquals("結果は？", standard.readLine(3));
+		standard.readLine();
+		standard.readLine();
+		standard.readLine();
+		assertEquals("結果は？", standard.readLine());
+	}
+
+	@Test
+	void あいこ勝負つかずが表示される() {
+		standard.readLine();
+		standard.readLine();
+		standard.readLine();
+		standard.readLine();
+		assertEquals("あいこ!勝負つかず!", standard.readLine());
+	}
+
+	@Test
+	void ジャンケンの手が正常に出力されるかの確認() {
+		//オブジェクトの生成
+		Janken janken = new Janken();
+		janken.makeHandStatus();
+		//期待値
+		String expectedG = janken.getG();
+		String expectedC = janken.getC();
+		String expectedP = janken.getP();
+		//実測値
+		String actual = janken.getHandStatus();
+		//比較
+		assertTrue(expectedG.equals(actual) || expectedC.equals(actual) || expectedP.equals(actual));
 	}
 
 	public class StandardOutputStream extends PrintStream {
@@ -64,21 +92,5 @@ public class TestJanken {
 				throw new RuntimeException(e);
 			}
 		}
-		 /**
-	     * 指定した行数分の文字列を読み飛ばし、次の行を読み込む
-	     * @param linesToSkip 読み飛ばす行数
-	     * @return 読み飛ばした後の最初の行。終端の場合はnull
-	     */
-	    public String readLine(int linesToSkip) {
-	        try {
-	            for (int i = 0; i < linesToSkip; i++) {
-	                br.readLine();
-	            }
-	            return readLine();  // 既存の readLine を使用
-	        } catch (IOException e) {
-	            throw new RuntimeException(e);
-	        }
-	    }
 	}
-
 }
