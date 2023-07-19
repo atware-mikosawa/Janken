@@ -27,12 +27,12 @@ class Janken {
 	//ランダムな1~3の数値を出す
 	public void makeHandStatus() {
 		double round = Math.random() * 2;
-		int rondomInt = (int) Math.round(round);
-		if (rondomInt == 0) {
+		int randomInt = (int) Math.round(round);
+		if (randomInt == 0) {
 			this.handStatus = ROCK;
-		} else if (rondomInt == 1) {
+		} else if (randomInt == 1) {
 			this.handStatus = SCISSORS;
-		} else if (rondomInt == 2) {
+		} else if (randomInt == 2) {
 			this.handStatus = PAPER;
 		}
 	}
