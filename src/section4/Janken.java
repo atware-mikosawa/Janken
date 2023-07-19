@@ -1,9 +1,9 @@
 package section4;
 
 class Janken {
-	private static final String G = "グー";
-	private static final String C = "チョキ";
-	private static final String P = "パー";
+	private static final String ROCK = "グー";
+	private static final String SCISSORS = "チョキ";
+	private static final String PAPER = "パー";
 	String handStatus;
 	private String name1;
 	private String name2;
@@ -29,11 +29,11 @@ class Janken {
 		double round = Math.random() * 2;
 		int rondomInt = (int) Math.round(round);
 		if (rondomInt == 0) {
-			this.handStatus = G;
+			this.handStatus = ROCK;
 		} else if (rondomInt == 1) {
-			this.handStatus = C;
+			this.handStatus = SCISSORS;
 		} else if (rondomInt == 2) {
-			this.handStatus = P;
+			this.handStatus = PAPER;
 		}
 	}
 
@@ -41,14 +41,14 @@ class Janken {
 	public void result(String hand1, String hand2) {
 		System.out.println("結果は？");
 		if (//name1が勝つ時
-		(hand1.equals("グー")) && (hand2.equals("チョキ"))
-				|| (hand1.equals("チョキ")) && (hand2.equals("パー"))
-				|| (hand1.equals("パー")) && (hand2.equals("グー"))) {
+		(hand1.equals(ROCK)) && (hand2.equals(SCISSORS))
+				|| (hand1.equals(SCISSORS)) && (hand2.equals(PAPER))
+				|| (hand1.equals(PAPER)) && (hand2.equals(ROCK))) {
 			System.out.println(name1 + "さんの勝利！");
 		} else if (//name2が勝つ時
-		(hand2.equals("グー")) && (hand1.equals("チョキ"))
-				|| (hand2.equals("チョキ")) && (hand1.equals("パー"))
-				|| (hand2.equals("パー")) && (hand1.equals("グー"))) {
+		(hand2.equals(ROCK)) && (hand1.equals(SCISSORS))
+				|| (hand2.equals(SCISSORS)) && (hand1.equals(PAPER))
+				|| (hand2.equals(PAPER)) && (hand1.equals(ROCK))) {
 			System.out.println(name2 + "さんの勝！");
 		} else if (hand1.equals(hand2)) {//あいこの時
 			System.out.println("あいこ!勝負つかず!");
@@ -63,15 +63,15 @@ class Janken {
 	}
 
 	public String getG() {
-		return G;
+		return ROCK;
 	}
 
 	public String getC() {
-		return C;
+		return SCISSORS;
 	}
 
 	public String getP() {
-		return P;
+		return PAPER;
 	}
 
 }
