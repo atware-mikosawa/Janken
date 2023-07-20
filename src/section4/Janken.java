@@ -49,7 +49,7 @@ class Janken {
 		(hand2.equals(ROCK)) && (hand1.equals(SCISSORS))
 				|| (hand2.equals(SCISSORS)) && (hand1.equals(PAPER))
 				|| (hand2.equals(PAPER)) && (hand1.equals(ROCK))) {
-			System.out.println(name2 + "さんの勝！");
+			System.out.println(name2 + "さんの勝利！");
 		} else if (hand1.equals(hand2)) {//あいこの時
 			System.out.println("あいこ!勝負つかず!");
 		} else {
