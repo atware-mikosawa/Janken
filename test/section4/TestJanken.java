@@ -1,5 +1,8 @@
 package section4;
 
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.BufferedReader;
@@ -7,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.StringReader;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,9 +40,7 @@ public class TestJanken {
 	@Test
 	void コンソール上で受け取った一人目の名前とジャンケンの手が表示される() {
 		//オブジェクトの生成
-		Janken janken = new Janken();
 		standard.readLine();
-		janken.makeHandStatus();
 		//期待値
 		String expected1 = "mikosawaの手：グー";
 		String expected2 = "mikosawaの手：チョキ";
@@ -52,10 +54,8 @@ public class TestJanken {
 	@Test
 	void コンソール上で受け取った二人目の名前とジャンケンの手が表示される() {
 		//オブジェクトの生成
-		Janken janken = new Janken();
 		standard.readLine();
 		standard.readLine();
-		janken.makeHandStatus();
 		//期待値
 		String expected1 = "mokoの手：グー";
 		String expected2 = "mokoの手：チョキ";
@@ -66,19 +66,20 @@ public class TestJanken {
 		assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
 	}
 
-	@Test
-	void ジャンケンの手が正常に出力されるかの確認() {
-		//オブジェクトの生成
-		Janken janken = new Janken();
-		janken.makeHandStatus();
-		//期待値
-		String expectedG = janken.getG();
-		String expectedC = janken.getC();
-		String expectedP = janken.getP();
-		//実測値
-		String actual = janken.getHandStatus();
-		//比較
-		assertTrue(expectedG.equals(actual) || expectedC.equals(actual) || expectedP.equals(actual));
+    @Test
+    void ジャンケンの手がそれぞれおおよそ3分の1の確率で選択されること() {
+
+        var counts = IntStream.range(0, 100)
+                .mapToObj(ignoreUnused -> Hand.decide())
+                .collect(groupingBy(identity(), counting()));
+
+		assertTrue(isWithinRange(counts.get(Hand.ROCK), 20, 40));
+        assertTrue(isWithinRange(counts.get(Hand.SCISSORS), 20, 40));
+        assertTrue(isWithinRange(counts.get(Hand.PAPER), 20, 40));
+    }
+
+	private static boolean isWithinRange(Long count, int lowerLimit, int upperLimit) {
+		return lowerLimit < count && count < upperLimit;
 	}
 
 	@Test
@@ -117,7 +118,7 @@ public class TestJanken {
 			var result = standard.readLine();
 			assertTrue(nameEqualsTo(result, "moko"));
 		}
-		
+
 		private boolean nameEqualsTo(String output, String expected) {
 			return output.startsWith(expected);
 		}
