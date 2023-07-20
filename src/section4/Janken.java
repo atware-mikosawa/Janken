@@ -12,8 +12,7 @@ class Janken {
         player1.decideHand();
         player2.decideHand();
 
-        displayHand(player1);
-        displayHand(player2);
+
 
         var result = player1.getHand().judgeAgainst(player2.getHand());
 

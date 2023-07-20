@@ -91,7 +91,7 @@ public class TestJanken {
 	}
 
 	@Test
-	void 勝敗結果が正常に返ってくること() {
+	void 勝敗結果が正常に返ってくること(){
 		//オブジェクト生成
 		Janken janken = new Janken();
 		standard.readLine();
