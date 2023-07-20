@@ -17,7 +17,7 @@ public class TestJanken {
 	@BeforeEach
 	void setUp() {//共通部分
 		System.setOut(standard);//標準出力されるものを、standardに書き換える
-	}Ï
+	}
 
 	@Test
 	void コンソール上でジャンケンぽんが出力されること() {
