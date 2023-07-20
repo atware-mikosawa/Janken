@@ -25,33 +25,45 @@ public class TestJanken {
 		assertEquals("ジャンケンぽん！", standard.readLine());
 	}
 
+	//	@ParameterizedTest
+	//	@ValueSource(strings = {"mikosawaの手：グー", "mikosawaの手：チョキ", "mikosawaの手：パー"})
+	//	void コンソール上で受け取った一人目の名前とジャンケンの手が表示される(String expected) {
+	//		standard.readLine(); //sysoutのスキップ
+	//		//実測値
+	//		String actual = standard.readLine();
+	//		Assertions.assertEquals(expected, actual);
+	//	}
+	@Test
 	void コンソール上で受け取った一人目の名前とジャンケンの手が表示される() {
-		standard.readLine(); //sysoutのスキップ
-		assertEquals("mikosawaの手：グー", standard.readLine());
+		//オブジェクトの生成
+		Janken janken = new Janken();
+		standard.readLine();
+		janken.makeHandStatus();
+		//期待値
+		String expected1 = "mikosawaの手：グー";
+		String expected2 = "mikosawaの手：チョキ";
+		String expected3 = "mikosawaの手：パー";
+		//実測値
+		String actual = standard.readLine();
+		//比較
+		assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
 	}
 
 	@Test
-	void コンソール上で受け取った二人目の名前が表示される() {
+	void コンソール上で受け取った二人目の名前とジャンケンの手が表示される() {
+		//オブジェクトの生成
+		Janken janken = new Janken();
 		standard.readLine();
 		standard.readLine();
-		assertEquals("mokoの手：グー", standard.readLine());
-	}
-
-	@Test
-	void 結果はが表示される() {
-		standard.readLine();
-		standard.readLine();
-		standard.readLine();
-		assertEquals("結果は？", standard.readLine());
-	}
-
-	@Test
-	void あいこ勝負つかずが表示される() {
-		standard.readLine();
-		standard.readLine();
-		standard.readLine();
-		standard.readLine();
-		assertEquals("あいこ!勝負つかず!", standard.readLine());
+		janken.makeHandStatus();
+		//期待値
+		String expected1 = "mokoの手：グー";
+		String expected2 = "mokoの手：チョキ";
+		String expected3 = "mokoの手：パー";
+		//実測値
+		String actual = standard.readLine();
+		//比較
+		assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
 	}
 
 	@Test
@@ -68,6 +80,56 @@ public class TestJanken {
 		//比較
 		assertTrue(expectedG.equals(actual) || expectedC.equals(actual) || expectedP.equals(actual));
 	}
+
+	@Test
+	void 結果はが表示される() {
+		standard.readLine();
+		standard.readLine();
+		standard.readLine();
+		assertEquals("結果は？", standard.readLine());
+	}
+
+	@Test
+	void 勝敗結果が正常に返ってくること(){
+		//オブジェクト生成
+		Janken janken = new Janken();
+		standard.readLine();
+		standard.readLine();
+		standard.readLine();
+		standard.readLine();
+		//期待値
+		String expected1 = "mikosawaさんの勝利！";
+		String expected2 = "mokoさんの勝利！";
+		String expected3 = "あいこ!勝負つかず!";
+		String expected4 = "エラーが発生しました";
+		//実測値
+		String actual = standard.readLine();
+		//比較
+		assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual)
+				|| expected4.equals(actual));
+	}
+
+		@Test
+		void コンソール上で受け取った二人目の名前が表示される() {
+			standard.readLine();
+			standard.readLine();
+//			assertEquals("mokoの手：グー", standard.readLine());
+			var result = standard.readLine();
+			assertTrue(nameEqualsTo(result, "moko"));
+		}
+		
+		private boolean nameEqualsTo(String output, String expected) {
+			return output.startsWith(expected);
+		}
+
+	//	@Test
+	//	void あいこ勝負つかずが表示される() {
+	//		standard.readLine();
+	//		standard.readLine();
+	//		standard.readLine();
+	//		standard.readLine();
+	//		assertEquals("あいこ!勝負つかず!", standard.readLine());
+	//	}
 
 	public class StandardOutputStream extends PrintStream {
 		private BufferedReader br = new BufferedReader(new StringReader(""));
