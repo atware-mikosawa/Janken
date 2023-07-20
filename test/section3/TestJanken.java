@@ -2,33 +2,69 @@ package section3;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.StringReader;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestJanken {
-	//	StandardOutputStream standard = new StandardOutputStream();
+	StandardOutputStream standard = new StandardOutputStream();
 
-	//	@BeforeEach
-	//	void setUp() {
-	//		System.setOut(standard);
-	//	}
-	//
-	//	@Test
-	//	void 掛け声が表示されること() {
-	//		Janken.main();
-	//		assertEquals("abc", standard.readLine());
-	//	}
-
-	//	@Test
-	//	void 一人目の名前が表示される() {
-	//		Janken.main();
-	//		//		assertEquals("グー", );
-	//	}
+	@BeforeEach
+	void setUp() {//共通部分
+		System.setOut(standard);//標準出力されるものを、standardに書き換える
+	}Ï
 
 	@Test
-	void プレイヤーからグーチョキパーの値が出力されること() {
-		Player player = new Player("一人目");
-		String result = player.play();
-		assertTrue("グー".equals(result) || ("チョキ").equals(result) || ("パー").equals(result));
+	void コンソール上でジャンケンぽんが出力されること() {
+		Janken.main(new String[] { "mikosawa", "moko" });//実行する際の引数
+		assertEquals("じゃんけん・・・ポン！！！", standard.readLine());
+	}
+
+	@Test
+	void コンソール上で受け取った一人目の名前が表示されること() {
+		Janken.main(new String[] { "mikosawa", "moko" });//実行する際の引数
+		standard.readLine();
+		var result = standard.readLine();
+		assertTrue(nameEqualsTo(result, "mikosawa"));
+	}
+	@Test
+	void コンソール上で受け取った一人目の手が表示されること() {
+		Janken.main(new String[] { "mikosawa", "moko" });//実行する際の引数
+		standard.readLine();
+		//期待値
+		String endWord1 = "グー";
+		String endWord2 = "チョキ";
+		String endWord3 = "パー";
+		//実測値
+		var actual = standard.readLine();
+		assertTrue( actual.endsWith(endWord1) || actual.endsWith(endWord2) || actual.endsWith(endWord3));
+	}
+	@Test
+	void コンソール上で受け取った二人目の名前が表示されること() {
+		Janken.main(new String[] { "mikosawa", "moko" });//実行する際の引数
+		standard.readLine();
+		standard.readLine();
+		var result = standard.readLine();
+		assertTrue(nameEqualsTo(result, "moko"));
+	}
+	
+	@Test
+	void コンソール上で受け取った二人目の手が表示されること() {
+		Janken.main(new String[] { "mikosawa", "moko" });//実行する際の引数
+		standard.readLine();
+		standard.readLine();
+		//期待値
+		String endWord1 = "グー";
+		String endWord2 = "チョキ";
+		String endWord3 = "パー";
+		//実測値
+		var actual = standard.readLine();
+		assertTrue( actual.endsWith(endWord1) || actual.endsWith(endWord2) || actual.endsWith(endWord3));
 	}
 
 	@Test
@@ -38,36 +74,37 @@ public class TestJanken {
 	}
 
 	@Test
-	void プレイヤーが任意のグーかチョキかパーが出力されること() {
+	void プレイヤーが任意のグーかチョキかパーが帰ってくること() {
 		Player player = new Player("mikosawa");
-		String result = player.playByAny();
+		String result = player.play();
 		assertTrue("グー".equals(result) || ("チョキ").equals(result) || ("パー").equals(result));
 	}
 
+	//ジャンケンの判定
 	@Test
 	void ジャンケンの判定ができるパーとグーではパーが勝つ() {
-		Game game = new Game();
+		Game game = new Game(new Player("mikosawa"), new Player("mi"));
 		String result = game.juge("パー", "グー");
 		assertEquals("パー", result);
 	}
 
 	@Test
 	void ジャンケンの判定ができるグーとチョキでグーが勝つ() {
-		Game game = new Game();
+		Game game = new Game(new Player("mikosawa"), new Player("mi"));
 		String result = game.juge("グー", "チョキ");
 		assertEquals("グー", result);
 	}
 
 	@Test
 	void ジャンケンの判定ができるチョキとパーではチョキが勝つ() {
-		Game game = new Game();
+		Game game = new Game(new Player("mikosawa"), new Player("mi"));
 		String result = game.juge("チョキ", "パー");
 		assertEquals("チョキ", result);
 	}
 
 	@Test
 	void ジャンケンの判定がアイコになること() {
-		Game game = new Game();
+		Game game = new Game(new Player("mikosawa"), new Player("mi"));
 		String result = game.juge("チョキ", "チョキ");
 		assertEquals("あいこ", result);
 		result = game.juge("グー", "グー");
@@ -76,29 +113,66 @@ public class TestJanken {
 		assertEquals("あいこ", result);
 	}
 
-	//	public class StandardOutputStream extends PrintStream {
-	//		private BufferedReader br = new BufferedReader(new StringReader(""));
-	//
-	//		public StandardOutputStream() {
-	//			super(new ByteArrayOutputStream());
-	//		}}
-	//
-	//		/**
-	//		 * 1行分の文字列を読み込む
-	//		 * @return 改行を含まない文字。終端の場合はnull
-	//		 */
-	//		public String readLine() {
-	//			String line = "";
-	//			try {
-	//				if ((line = br.readLine()) != null)
-	//					return line;
-	//				br = new BufferedReader(new StringReader(out.toString()));
-	//				((ByteArrayOutputStream) out).reset();
-	//				return br.readLine();
-	//			} catch (IOException e) {
-	//				throw new RuntimeException(e);
-	//			}
-	//		}
-	//	}
+	@Test
+	void ランダムな数字0から2が出力されるか() {
+		Player player = new Player("mikosawa");
 
+		double result = player.makeAny();
+		assertTrue(0 == result || 1 == result || 2 == result);
+	}
+
+	@Test
+	void コンソール上で受け取った名前と勝敗の判定が正常に帰ってくるか() {
+		//オブジェクト生成
+		Game game = new Game(new Player("mikosawa"), new Player("mi"));
+		//期待値
+		String endWord = "さんの勝利！";
+		String expected2 = "あいこ勝負つかず！";
+		//実測値
+		String actual = game.playersReachOut();
+		//比較
+		assertTrue(actual.endsWith(endWord) || expected2.equals(actual));
+	}
+
+	//	@Test
+	//	void 一人目のプレイヤーがランダムな手を持つこと() {
+	//		//オブジェクト生成
+	//		Player player = new Player();
+	//		//期待値
+	//		String expected = "グー";
+	//		String expected = "チョキ";
+	//		
+	//		//実測値
+	//		String actual = ; 
+	//		//比較
+	//		
+	//	}
+	private boolean nameEqualsTo(String output, String expected) {
+		return output.startsWith(expected);
+	}
+
+	public class StandardOutputStream extends PrintStream {
+		private BufferedReader br = new BufferedReader(new StringReader(""));
+
+		public StandardOutputStream() {
+			super(new ByteArrayOutputStream());
+		}
+
+		/**
+		 * 1行分の文字列を読み込む
+		 * @return 改行を含まない文字。終端の場合はnull
+		 */
+		public String readLine() {
+			String line = "";
+			try {
+				if ((line = br.readLine()) != null)
+					return line;
+				br = new BufferedReader(new StringReader(out.toString()));
+				((ByteArrayOutputStream) out).reset();
+				return br.readLine();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
 }
