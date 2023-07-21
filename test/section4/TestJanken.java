@@ -1,8 +1,5 @@
 package section4;
 
-import static java.util.function.Function.identity;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.BufferedReader;
@@ -66,17 +63,17 @@ public class TestJanken {
 		assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
 	}
 
-    @Test
-    void ジャンケンの手がそれぞれおおよそ3分の1の確率で選択されること() {
+	@Test
+	void ジャンケンの手がそれぞれおおよそ3分の1の確率で選択されること() {
 
-        var counts = IntStream.range(0, 100)
-                .mapToObj(ignoreUnused -> Hand.decide())
-                .collect(groupingBy(identity(), counting()));
+		var counts = IntStream.range(0, 100)
+				.mapToObj(ignoreUnused -> Hand.decide())
+				.collect(groupingBy(identity(), counting()));
 
 		assertTrue(isWithinRange(counts.get(Hand.ROCK), 20, 40));
-        assertTrue(isWithinRange(counts.get(Hand.SCISSORS), 20, 40));
-        assertTrue(isWithinRange(counts.get(Hand.PAPER), 20, 40));
-    }
+		assertTrue(isWithinRange(counts.get(Hand.SCISSORS), 20, 40));
+		assertTrue(isWithinRange(counts.get(Hand.PAPER), 20, 40));
+	}
 
 	private static boolean isWithinRange(Long count, int lowerLimit, int upperLimit) {
 		return lowerLimit < count && count < upperLimit;
@@ -91,7 +88,7 @@ public class TestJanken {
 	}
 
 	@Test
-	void 勝敗結果が正常に返ってくること(){
+	void 勝敗結果が正常に返ってくること() {
 		//オブジェクト生成
 		Janken janken = new Janken();
 		standard.readLine();
@@ -110,18 +107,18 @@ public class TestJanken {
 				|| expected4.equals(actual));
 	}
 
-		@Test
-		void コンソール上で受け取った二人目の名前が表示される() {
-			standard.readLine();
-			standard.readLine();
-//			assertEquals("mokoの手：グー", standard.readLine());
-			var result = standard.readLine();
-			assertTrue(nameEqualsTo(result, "moko"));
-		}
+	@Test
+	void コンソール上で受け取った二人目の名前が表示される() {
+		standard.readLine();
+		standard.readLine();
+		//			assertEquals("mokoの手：グー", standard.readLine());
+		var result = standard.readLine();
+		assertTrue(nameEqualsTo(result, "moko"));
+	}
 
-		private boolean nameEqualsTo(String output, String expected) {
-			return output.startsWith(expected);
-		}
+	private boolean nameEqualsTo(String output, String expected) {
+		return output.startsWith(expected);
+	}
 
 	//	@Test
 	//	void あいこ勝負つかずが表示される() {
