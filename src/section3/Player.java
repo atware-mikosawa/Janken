@@ -17,7 +17,7 @@ class Player {
 		return random;
 	}
 
-	public String playByAny(double value) {//①ランダムなグーチョキかパーを返す。makeAny()で数字を受け取って文字に変換	
+	public String playByAny(double value) {//ランダムなグーチョキかパーを返す。makeAny()で数字を受け取って文字に変換	
 		if (value == 0.0) {
 			return "グー";
 		} else if (value == 1.0) {
