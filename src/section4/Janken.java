@@ -5,6 +5,7 @@ class Janken {
 	public static void main(String... args) {
 
 		var player1 = new Player(args[0]);
+
 		var player2 = new Player(args[1]);
 		var ref = new Player(args[2]);
 
