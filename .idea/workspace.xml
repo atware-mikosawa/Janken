@@ -20,16 +20,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "jdk.selected.JAVA_MODULE": "17",
-    "onboarding.tips.debug.path": "/Users/yutamikosawa/Documents/Java/Janken/JavaPractice/src/Main.java",
-    "project.structure.last.edited": "モジュール",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/yutamikosawa/Documents/Java/Janken/JavaPractice/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;モジュール&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="JUnit.TestJanken">
     <configuration name="section4.Janken" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="section4.Janken" />
       <module name="JavaPractice" />
