@@ -1,6 +1,6 @@
 package section3;
 
-public class Game {
+public class Game {//修正済み
 	private Player player1;
 	private Player player2;
 
