@@ -1,6 +1,6 @@
 package section4;
 
-class Janken {
+class Janken {//修正済み
 
 	public static void main(String... args) {
 
