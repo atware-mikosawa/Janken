@@ -6,26 +6,27 @@ class Janken {
 
 		var player1 = new Player(args[0]);
 		var player2 = new Player(args[1]);
+		var ref = new Player(args[2]);
 
-		displayCallOut();
+		displayCallOut(ref);
 
 		player1.decideHand();
 		player2.decideHand();
 
-		displayHand(player1);
-		displayHand(player2);
+		displayHand(ref, player1);
+		displayHand(ref, player2);
 
 		var result = player1.getHand().judgeAgainst(player2.getHand());
 
 		displayResult(result, player1.getName(), player2.getName());
 	}
 
-	private static void displayCallOut() {
-		System.out.println("ジャンケンぽん！");
+	private static void displayCallOut(Player ref) {
+		System.out.println( ref.getName() + "「ジャンケンぽん！」");
 	}
 
-	private static void displayHand(Player player) {
-		System.out.printf("%sの手：%s%n", player.getName(), player.getHand().getJapaneseName());
+	private static void displayHand(Player ref, Player player) {
+		System.out.printf(ref.getName() +  "%sの手：%s%n", player.getName(), player.getHand().getJapaneseName());
 	}
 
 	private static void displayResult(Result result, String player1Name, String player2Name) {
