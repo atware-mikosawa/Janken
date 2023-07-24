@@ -5,17 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f07edc0c-6f5b-409d-a013-4f8765dde962" name="変更" comment="修正">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/section3/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/section3/JankenResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ex2_02_2_Janken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ex2_02_2_Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ex2_02_2_Referee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sample1_03_1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sample1_03_2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/section3/Janken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/section3/Janken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/section3/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/section3/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/section3/TestJanken.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/section3/TestJanken.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,7 +60,7 @@
     "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.TestJanken">
+  <component name="RunManager" selected="アプリケーション.Janken">
     <configuration name="Janken" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="section3.Janken" />
       <module name="JavaPractice" />
@@ -67,6 +85,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestJanken (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaPractice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="section3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="section3" />
+      <option name="MAIN_CLASS_NAME" value="section3.TestJanken" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -179,6 +212,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestJanken (1)" />
         <item itemvalue="JUnit.TestJanken" />
         <item itemvalue="アプリケーション.section4.Janken" />
         <item itemvalue="JUnit.TestJanken.標準出力2行目の始まりが審判チョコであること" />
@@ -216,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690160520215</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="修正">
+      <created>1690162112268</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1690162112268</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
