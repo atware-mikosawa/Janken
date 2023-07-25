@@ -173,7 +173,7 @@ public class TestJanken {
 
 		/**
 		 * 1行分の文字列を読み込む
-		 * @return 改行を含まない文字。終端の場合はnull
+		 * @return 改行を含まない文字 終端の場合はnull
 		 */
 		public String readLine() {
 			String line = "";
