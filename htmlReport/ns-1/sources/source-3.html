@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MonsterBattle</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">section1</a>
+</div>
+
+<h1>Coverage Summary for Class: MonsterBattle (section1)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MonsterBattle</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package section1;
+&nbsp;
+&nbsp;public class MonsterBattle {
+&nbsp;    private Character myMonster;
+&nbsp;    private Character enemyMonster;
+&nbsp;
+&nbsp;    private int myMonsterHp;
+&nbsp;    private int enemyMonsterHp;
+&nbsp;
+<b class="nc">&nbsp;    public MonsterBattle(Character myMonster, Character enemyMonster) {</b>
+<b class="nc">&nbsp;        this.myMonster = myMonster;</b>
+<b class="nc">&nbsp;        this.enemyMonster = enemyMonster;</b>
+<b class="nc">&nbsp;        this.myMonsterHp = myMonster.getHp();</b>
+<b class="nc">&nbsp;        this.enemyMonsterHp = enemyMonster.getHp();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void attackMyMonster() {
+<b class="nc">&nbsp;        enemyMonsterHp = enemyMonsterHp - myMonster.getWaza().getDamage();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void attackEnemyMonster() {
+<b class="nc">&nbsp;        myMonsterHp = myMonsterHp - enemyMonster.getWaza().getDamage();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean judgeBattle() {
+<b class="nc">&nbsp;        if (enemyMonsterHp &lt;= 0) {</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (myMonsterHp &lt;= 0) {</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return false;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void printWinner() {
+<b class="nc">&nbsp;        if (enemyMonsterHp &lt;= 0) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;winner is mymonster&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (myMonsterHp &lt;= 0) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;winner is ennemymonster&quot;);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-07-28 18:34</div>
+</div>
+</body>
+</html>
