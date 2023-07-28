@@ -8,8 +8,8 @@ import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MonsterBattleTest {
-  StandardOutputStream standard = new MonsterBattleTest.StandardOutputStream();
+public class MainTest {
+  StandardOutputStream standard = new MainTest.StandardOutputStream();
 
     @BeforeEach
     void setUp() {//共通部分
