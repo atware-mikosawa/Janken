@@ -14,7 +14,9 @@ class Janken {
         ref.displayHand(player1);
         ref.displayHand(player2);
 
-        var result = player1.getHand().judgeAgainst(player2.getHand());
+        Hand hand1 = player1.getHand();
+        Hand hand2 = player2.getHand();
+        var result = hand1.judgeAgainst(hand2);
         ref.displayResult(result, player1.getName(), player2.getName(), ref.getRefName());
     }
 }

@@ -11,7 +11,7 @@ public class Ref {
         return refName;
     }
 
-    //元々14,18行目のメソッドはprivate、なぜ？,publicにしても良いの？、なぜstaticだったの？
+    //元々14,18行目のメソッドはprivateだったのはなぜ？,publicにしても良いの？、なぜstaticだったの？
     public void displayCallOut() {
         System.out.println(this.refName + "「ジャンケンぽん！」");
     }

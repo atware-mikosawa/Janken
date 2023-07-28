@@ -166,7 +166,7 @@ public class TestJanken {
     }
 
     public class StandardOutputStream extends PrintStream {
-        private BufferedReader br = new BufferedReader(new StringReader(""));
+        private BufferedReader br = new BufferedReader(new StringReader(""));//StringReaderで文字列に変換している？
 
         public StandardOutputStream() {
             super(new ByteArrayOutputStream());
