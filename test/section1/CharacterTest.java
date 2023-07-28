@@ -27,7 +27,7 @@ class CharacterTest {
     void getWazaTest() {
         Waza waza = new Waza("わざ", 10);
         Character character = new Character("フシギダネ", 100, waza);
-        String expected = "わざ";
+        Waza expected = "わざ";
         Waza actual = character.getWaza();
         assertEquals(expected, actual);
     }
