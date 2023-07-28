@@ -6,24 +6,29 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CharacterTest {
     @Test
-    void getNameTest(){
-        Character character = new Character("フシギダネ", 100, "わざ");
+    void getNameTest() {
+        Waza waza = new Waza("わざ", 10);
+        Character character = new Character("フシギダネ", 100, waza);
         String expect = "フシギダネ";
         String actual = character.getName();
-        assertEquals(expect,actual);
+        assertEquals(expect, actual);
     }
+
     @Test
-    void getHpTest(){
-        Character character = new Character("フシギダネ", 100, "わざ");
+    void getHpTest() {
+        Waza waza = new Waza("わざ", 10);
+        Character character = new Character("フシギダネ", 100, waza);
         int expected = 100;
         int actual = character.getHp();
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
     }
+
     @Test
-    void getWazaTest(){
-        Character character = new Character("フシギダネ", 100, "わざ");
+    void getWazaTest() {
+        Waza waza = new Waza("わざ", 10);
+        Character character = new Character("フシギダネ", 100, waza);
         String expected = "わざ";
-        String actual = character.getWaza();
-        assertEquals(expected,actual);
+        Waza actual = character.getWaza();
+        assertEquals(expected, actual);
     }
 }
