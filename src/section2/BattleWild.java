@@ -94,6 +94,7 @@ class BattleWild {
                 }
                 //何か入力されるまで待機
                 System.out.println("▼");
+                System.out.println("次に行く場合はキーを押してください");
                 pushBtn();
 
                 //相手のモンスターの行動(HPがゼロの際は何もしない)
@@ -111,6 +112,7 @@ class BattleWild {
                 }
                 //何か入力されるまで待機
                 System.out.println("▼");
+                System.out.println("次に行く場合はキーを押してください");
                 pushBtn();
 
             } else {
@@ -128,6 +130,7 @@ class BattleWild {
                 }
                 //何か入力されるまで待機
                 System.out.println("▼");
+                System.out.println("次に行く場合はキーを押してください");
                 pushBtn();
 
                 //自分のモンスターの行動(HPがゼロの際は何もしない)
@@ -156,6 +159,7 @@ class BattleWild {
                 }
                 //何か入力されるまで待機
                 System.out.println("▼");
+                System.out.println("次に行く場合はキーを押してください");
                 pushBtn();
             }
         }

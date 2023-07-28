@@ -1,6 +1,7 @@
 package section2;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Monster3 {
     private String character;
@@ -176,8 +177,8 @@ public class Monster3 {
         BigDecimal value2 = new BigDecimal(dmgCorection1);
         BigDecimal def1 = new BigDecimal(def);
 
-//      ダメージ減算率
-        BigDecimal Subtraction = value2.divide(value2.add(def1).divide(value1));
+//      ダメージ減算率　value2 / (value2 + (def1 / value1))
+        BigDecimal Subtraction = value2.divide(value2.add(def1.divide(value1, 2, RoundingMode.DOWN)),2,RoundingMode.DOWN);
 //      実際に受けるダメージ
         int receiveDamage = bgDmg.multiply(Subtraction).intValue();
 
