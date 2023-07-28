@@ -4,13 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13374602-6b9e-4ebb-b327-5475046fc075" name="変更" comment="intellij移行">
+    <list default="true" id="13374602-6b9e-4ebb-b327-5475046fc075" name="変更" comment="Monster3の修正">
+      <change afterPath="$PROJECT_DIR$/src/section3/Referee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/section3/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/section3/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/section3/Janken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/section3/Janken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/section3/JankenResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/section3/JankenResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/section3/TestJanken.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/section3/TestJanken.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -20,20 +32,34 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "jdk.selected.JAVA_MODULE": "17",
-    "onboarding.tips.debug.path": "/Users/yutamikosawa/Documents/Java/Janken/JavaPractice/src/Main.java",
-    "project.structure.last.edited": "モジュール",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/yutamikosawa/Documents/Java/Janken/JavaPractice/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;モジュール&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.TestJanken">
+}</component>
+  <component name="RunManager" selected="JUnit.TestJanken.testOutPut">
+    <configuration name="Janken" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="section3.Janken" />
+      <module name="JavaPractice" />
+      <option name="PROGRAM_PARAMETERS" value="mikosawa moko" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="section3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="section4.Janken" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="section4.Janken" />
       <module name="JavaPractice" />
@@ -63,37 +89,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestJanken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaPractice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="section4.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="section4" />
-      <option name="MAIN_CLASS_NAME" value="section4.TestJanken" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestJanken.審判の名前が表示されること" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaPractice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="section4.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="section4" />
-      <option name="MAIN_CLASS_NAME" value="section4.TestJanken" />
-      <option name="METHOD_NAME" value="審判の名前が表示されること" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestJanken.標準出力2行目の始まりが審判チョコであること" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaPractice" />
       <extension name="coverage">
@@ -110,13 +105,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestJanken.testOutPut" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaPractice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="section3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="section3" />
+      <option name="MAIN_CLASS_NAME" value="section3.TestJanken" />
+      <option name="METHOD_NAME" value="testOutPut" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="アプリケーション.section4.Janken" />
+        <item itemvalue="JUnit.TestJanken.testOutPut" />
+        <item itemvalue="アプリケーション.Janken" />
         <item itemvalue="JUnit.TestJanken (1)" />
+        <item itemvalue="アプリケーション.section4.Janken" />
         <item itemvalue="JUnit.TestJanken.標準出力2行目の始まりが審判チョコであること" />
-        <item itemvalue="JUnit.TestJanken.審判の名前が表示されること" />
-        <item itemvalue="JUnit.TestJanken" />
       </list>
     </recent_temporary>
   </component>

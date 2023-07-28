@@ -4,10 +4,12 @@ package section3;
 public class Game {
     private Player player1;
     private Player player2;
+    private Referee referee;
 
-    public Game(Player player1, Player player2) {
+    public Game(Player player1, Player player2,Referee referee) {
         this.player1 = player1;
         this.player2 = player2;
+        this.referee = referee;
     }
 
     JankenResult playersReachOut() {
@@ -20,7 +22,7 @@ public class Game {
         } else if (result.equals(hand2)) {//player2が勝ったとき
             wonPlayer = player2;
         }
-        return new JankenResult(hand1, hand2, wonPlayer, player1, player2);
+        return new JankenResult(hand1, hand2, wonPlayer, player1, player2,referee);
     }
 
     String juge(String hand1, String hand2) {//勝った手が出ること
