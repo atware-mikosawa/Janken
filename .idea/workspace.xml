@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13374602-6b9e-4ebb-b327-5475046fc075" name="変更" comment="Monster3の修正">
-      <change afterPath="$PROJECT_DIR$/src/section3/Referee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/section3/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/section3/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/section3/Janken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/section3/Janken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/section3/JankenResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/section3/JankenResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/section3/TestJanken.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/section3/TestJanken.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,5 +151,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/JavaPractice$CharacterTest.ic" NAME="CharacterTest のカバレッジ結果" MODIFIED="1690536833714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>section1.*</FILTER>
+    </SUITE>
   </component>
 </project>
