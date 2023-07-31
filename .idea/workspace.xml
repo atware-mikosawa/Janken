@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13374602-6b9e-4ebb-b327-5475046fc075" name="変更" comment="Monster3の修正">
+    <list default="true" id="13374602-6b9e-4ebb-b327-5475046fc075" name="変更" comment="勝敗レコードの機能の追加、勝敗レコードの機能のテストの追加">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/section3/TestJanken.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/section3/TestJanken.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

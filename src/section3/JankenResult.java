@@ -41,17 +41,18 @@ public class JankenResult {
         return player2;
     }
 
-    public String sayReferee(String text){
+    public String sayReferee(String text) {
         return "審判タロー「" + text + "」";
     }
+
     public String output() {
         String result = "";
         result += sayReferee("じゃんけん・・・ポン！！") + "\n";
-        result += sayReferee(player1.getName() + "さんの手：" + getHand1())  + "\n";
-        result += sayReferee(player2.getName() + "さんの手：" + getHand2() )+ "\n";
+        result += sayReferee(player1.getName() + "さんの手：" + getHand1()) + "\n";
+        result += sayReferee(player2.getName() + "さんの手：" + getHand2()) + "\n";
         result += sayReferee("結果は・・・") + "\n";
         if (Objects.nonNull(getWonHandPlayer())) {
-            result += sayReferee(getWonHandPlayer().getName() + "さんの勝利") ;
+            result += sayReferee(getWonHandPlayer().getName() + "さんの勝利");
         } else {
             result += sayReferee("あいこ・・・勝負つかず");
         }
