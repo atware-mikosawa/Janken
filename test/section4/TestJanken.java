@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 
 public class TestJanken {
     StandardOutputStream standard = new StandardOutputStream();//標準出力をカスタムのStandardOutputStreamにリダイレクト
-//    private final ByteArrayOutputStream outPut = new ByteArrayOutputStream();//19行目とこの処理は何が違うのか？
 
     @BeforeEach
     void setUp() {//共通部分
@@ -209,7 +208,7 @@ public class TestJanken {
         int recordPlayer2 = ref.getLoseRecordPlayer2();
         //比較
         assertEquals(winExpected, recordPlayer1);
-        assertEquals(loseExpected,recordPlayer2);
+        assertEquals(loseExpected, recordPlayer2);
     }
 
     //	@ParameterizedTest

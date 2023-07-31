@@ -13,11 +13,7 @@ class Player {
         return name;
     }
 
-    //	public void decideHand() {
-//hand = Hand.decide();
-//	}
     public void decideHand() {
-//		hand = Hand.decide();
         int decideHandNum = Hand.decide();
         if (decideHandNum == 0) {
             hand = Hand.ROCK;

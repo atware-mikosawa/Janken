@@ -33,7 +33,6 @@ public class Ref {
         return loseRecordPlayer2;
     }
 
-    //元々14,18行目のメソッドはprivateだったのはなぜ？,publicにしても良いの？、なぜstaticだったの？
     public void displayCallOut() {
         System.out.println(this.refName + "「ジャンケンぽん！」");
     }
@@ -69,15 +68,4 @@ public class Ref {
         return result;
     }
 
-//    public void winLoseCount(Result result) {
-//        if (result == Result.DRAW) {//あいこの時
-////何もしない
-//        } else if (result == Result.WIN) {//WINを受け取った時
-//            winRecordPlayer1++;
-//            loseRecordPlayer2++;
-//        } else {//LOSEを受け取った時
-//            loseRecordPlayer1++;
-//            winRecordPlayer2++;
-//        }
-//    }
 }
