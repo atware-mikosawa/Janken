@@ -18,5 +18,7 @@ class Janken {
         Hand hand2 = player2.getHand();
         var result = hand1.judgeAgainst(hand2);
         ref.displayResult(result, player1.getName(), player2.getName(), ref.getRefName());
+        String recordResult = ref.displayWinLoseResult(player1.getName(), player2.getName(), ref.getRefName());
+        System.out.println(recordResult);
     }
 }

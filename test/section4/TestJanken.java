@@ -97,7 +97,6 @@ public class TestJanken {
 
     @Test
     void ジャンケンの手がそれぞれおおよそ3分の1の確率で選択されること() {
-
         var counts = IntStream.range(0, 100)
                 .mapToObj(ignoreUnused -> Hand.decide())
                 .collect(groupingBy(identity(), counting()));
@@ -141,6 +140,76 @@ public class TestJanken {
         //比較
         assertTrue(actual.endsWith(expected1) || actual.endsWith(expected2) || actual.endsWith(expected3)
                 || actual.endsWith(expected4));
+    }
+
+    @Test
+    void じゃんけんのレコードを表示する行にplayer1の値が表示されること() {
+        //オブジェクト生成
+        standard.readLine();
+        standard.readLine();
+        standard.readLine();
+        standard.readLine();
+        standard.readLine();
+        //期待値
+        String expected = "mikosawa";
+        //実測値
+        String actual = standard.readLine();
+        //比較
+        assertTrue(actual.contains(expected));
+    }
+
+    @Test
+    void じゃんけんのレコードを表示する行にplayer2の値が表示されること() {
+        //オブジェクト生成
+        standard.readLine();
+        standard.readLine();
+        standard.readLine();
+        standard.readLine();
+        standard.readLine();
+        standard.readLine();
+
+        //期待値
+        String expected = "moko";
+        //実測値
+        String actual = standard.readLine();
+        //比較
+        assertTrue(actual.contains(expected));
+    }
+
+    @Test
+    void displayTestDisplayWinLoseResult() {
+        //オブジェクト生成
+        Player player1 = new Player("mikosawa");
+        Player player2 = new Player("moko");
+        Ref ref = new Ref("審判チョコ");
+        //期待値
+        String expected = """
+                審判チョコ「mikosawa：\\d勝\\d敗」
+                審判チョコ「moko：\\d勝\\d敗」
+                """;
+        //実測値
+        String actual = ref.displayWinLoseResult(player1.getName(), player2.getName(), ref.getRefName());
+        //比較
+        assertTrue(actual.matches(expected));
+    }
+
+    @Test
+    void mikosawaが勝った時のテスト() {//
+        //オブジェクト生成
+        Player player1 = new Player("mikosawa");
+        Player player2 = new Player("moko");
+        Ref ref = new Ref("審判チョコ");
+
+        ref.displayResult(Result.WIN, player1.getName(), player2.getName(), ref.getRefName());
+        //期待値
+        int winExpected = 1;
+        int loseExpected = 1;
+        //実測値
+        int recordPlayer1 = ref.getWinRecordPlayer1();
+        int recordPlayer2 = ref.getLoseRecordPlayer2();
+        //比較
+        assertEquals(winExpected, recordPlayer1);
+        assertEquals(loseExpected,recordPlayer2);
     }
 
     //	@ParameterizedTest
