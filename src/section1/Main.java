@@ -15,6 +15,7 @@ public class Main {
             if (flag) {
                 break;
             }
+
             monsterBattle.attackEnemyMonster();
             flag = monsterBattle.judgeBattle();
             if (flag) {
