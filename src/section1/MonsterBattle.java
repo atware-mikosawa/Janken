@@ -32,13 +32,19 @@ public class MonsterBattle {
         return false;
     }
 
-    public void printWinner() {
+    public String printWinner() {
+        String result = "";
         if (enemyMonsterHp <= 0) {
-            System.out.println("winner is mymonster");
+            result = "winner is mymonster";
+            return result;
+        } else if (myMonsterHp <= 0) {
+            result = "winner is ennemymonster";
+            return result;
+        } else {
+            result = "正しく戦闘が終了できませんでした。";
+            return result;
         }
-        if (myMonsterHp <= 0) {
-            System.out.println("winner is ennemymonster");
-        }
+
     }
 
 }

@@ -23,12 +23,4 @@ class CharacterTest {
         assertEquals(expected, actual);
     }
 
-//    @Test
-//    void getWazaTest() {
-//        Waza waza = new Waza("わざ", 10);
-//        Character character = new Character("フシギダネ", 100, waza);
-//        Waza expected = "わざ";
-//        Waza actual = character.getWaza();
-//        assertEquals(expected, actual);
-//    }
 }

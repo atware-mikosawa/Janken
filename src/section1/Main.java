@@ -21,6 +21,7 @@ public class Main {
                 break;
             }
         }
-        monsterBattle.printWinner();
+        String printResult =  monsterBattle.printWinner();
+        System.out.println(printResult);
     }
 }
