@@ -6,11 +6,13 @@ class Janken {
         var player1 = new Player(args[0]);
         var player2 = new Player(args[1]);
         var ref = new Ref(args[2]);
+//        Record record = new Record();
 
+        String preparationCallOutResult = ref.displayPreparationCallOut(player1,player2);
+        System.out.print(preparationCallOutResult);
         ref.displayCallOut();
         player1.decideHand();
         player2.decideHand();
-
         ref.displayHand(player1);
         ref.displayHand(player2);
 
