@@ -8,7 +8,7 @@ class CharacterTest {
     @Test
     void getNameTest() {
         Waza waza = new Waza("わざ", 10);
-        Character character = new Character("フシギダネ", 100, waza);
+        Character character = new Character("フシギダネ", 100, "たいあたり", 10);
         String expect = "フシギダネ";
         String actual = character.getName();
         assertEquals(expect, actual);
@@ -17,7 +17,7 @@ class CharacterTest {
     @Test
     void getHpTest() {
         Waza waza = new Waza("わざ", 10);
-        Character character = new Character("フシギダネ", 100, waza);
+        Character character = new Character("フシギダネ", 100, "たいあたり", 10);
         int expected = 100;
         int actual = character.getHp();
         assertEquals(expected, actual);

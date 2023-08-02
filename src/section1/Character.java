@@ -5,11 +5,10 @@ public class Character {
     private int hp;
     private Waza waza;
 
-    public Character(String name, int hp, Waza waza) {
+    public Character(String name, int hp, String wazaName, int wazaDamage) {
         this.name = name;
         this.hp = hp;
-        Waza waza2 = new Waza("わざ", 10);
-        this.waza = waza2;
+        this.waza = new Waza(wazaName, wazaDamage);
     }
 
     public String getName() {

@@ -11,8 +11,8 @@ public class MonsterBattleTest {
     @Test
     void testPrintWinner() {
         //オブジェクト生成
-        Character myCharacter = new Character("フシギダネ", 100, new Waza("たいあたり", 10));
-        Character enemyCharacter = new Character("ヒトカゲ", 150, new Waza("たいあたり", 7));
+        Character myCharacter = new Character("フシギダネ", 100, "たいあたり", 10);
+        Character enemyCharacter = new Character("ヒトカゲ", 150, "たいあたり", 10);
         MonsterBattle monsterBattle = new MonsterBattle(myCharacter, enemyCharacter);
         //期待値
         String expected1 = "winner is mymonster";
