@@ -1,5 +1,7 @@
 package section1;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Waza myCharacterWaza = new Waza("たいあたり", 10);
@@ -9,6 +11,9 @@ public class Main {
         Character enemyCharacter = new Character("ヒトカゲ", 150, enemyCharacterWaza);
 
         MonsterBattle monsterBattle = new MonsterBattle(myCharacter, enemyCharacter);
+        int inputNum = monsterBattle.receiveNum();
+        monsterBattle.selectBattle(inputNum);
+
         for (; ; ) {
             monsterBattle.attackMyMonster();
             boolean flag = monsterBattle.judgeBattle();

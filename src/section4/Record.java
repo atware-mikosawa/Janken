@@ -9,11 +9,11 @@ public class Record {
 
 //    public void saveRecords(int winRecordPlayer1, int loseRecordPlayer1, int winRecordPlayer2, int loseRecordPlayer2) {
 //        String data = winRecordPlayer1 + "," + loseRecordPlayer1 + "," + winRecordPlayer2 + "," + loseRecordPlayer2;
-//        try {
+
 //            Files.write(Paths.get("jankenRecords.txt"), data.getBytes());
-//        } catch (IOException e) {
+
 //            System.out.println("エラーが発生しました：" + e.getMessage());
-//        }
+
 //    }
 
 //    public void loadRecord() {

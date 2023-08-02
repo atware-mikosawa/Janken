@@ -8,7 +8,7 @@ import java.io.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class StandardOitputTest {
+public class StandardOutputTest {
     StandardOutputStream standard = new StandardOutputStream();//標準出力をカスタムのStandardOutputStreamにリダイレクト
 
     @BeforeEach
