@@ -18,20 +18,25 @@ public class Main {
             if (result == BattleResult.ESCAPE_SUCCESSFUL) {
                 break;
             }
-            monsterBattle.monsterStatus();
+            String displayMonsterStatus1 = monsterBattle.monsterStatus();
+            System.out.println(displayMonsterStatus1);
 
             //勝敗を判定
             int enemyMonsterHp = monsterBattle.getEnemyMonsterHp();
+            System.out.println(monsterBattle.displayJudgeBattle(enemyMonsterHp));
             boolean judgeEndMyTurn = monsterBattle.judgeBattle(enemyMonsterHp);
             if (judgeEndMyTurn) {
                 break;
             }
 
             //敵のターン
-            monsterBattle.enemyMonsterTurn();
-            monsterBattle.monsterStatus();
+            String displayEnemyMonsterTurn = monsterBattle.enemyMonsterTurn();
+            System.out.println(displayEnemyMonsterTurn);
+            String displayMonsterStatus2 = monsterBattle.monsterStatus();
+            System.out.println(displayMonsterStatus2);
 
             int myMonsterHp = monsterBattle.getMyMonsterHp();
+            System.out.println(monsterBattle.displayJudgeBattle(myMonsterHp));
             boolean judgeEndEnemyTurn = monsterBattle.judgeBattle(myMonsterHp);
             //勝敗を判定
             if (judgeEndEnemyTurn) {

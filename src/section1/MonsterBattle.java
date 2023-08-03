@@ -1,5 +1,6 @@
 package section1;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -38,14 +39,21 @@ public class MonsterBattle {
 
 
     public boolean judgeBattle(int hpState) {
-        System.out.println("判定するHP：" + hpState);
         if (hpState <= 0) {
-            System.out.println("HPが0になりました");
             return true;
         } else {
-            System.out.println("まだ生きています");
             return false;
         }
+    }
+
+    public String displayJudgeBattle(int hpState) {
+        String displayResult = "";
+        if (hpState <= 0) {
+            displayResult += "HPが0になりました";
+        } else {
+            displayResult += "まだ生きています";
+        }
+        return displayResult;
     }
 
     public String displayBattleResult() {
@@ -66,10 +74,16 @@ public class MonsterBattle {
     //標準入力を受け取るメソッドを作成
     public int receiveNum() {
         System.out.println("自分のターン");
-        System.out.println("0か1かを入力してください");
-        System.out.println("1：たたかう" + " " + "0：逃げる\n");
+        System.out.println("1か2かを入力してください");
+        System.out.println("1：たたかう" + " " + "2：逃げる\n");
         Scanner sc = new Scanner(System.in);
-        int test = sc.nextInt();
+        int test = 0;
+
+        try {
+            test = sc.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("入力する値が不正です");
+        }
         return test;
     }
 
@@ -78,7 +92,7 @@ public class MonsterBattle {
         if (selectionNum == 1) {//戦う
             System.out.println("たたかうが選択されました");
             return BattleResult.BATTLE;
-        } else if (selectionNum == 0) {
+        } else if (selectionNum == 2) {
             Random rand = new Random();
             int num = rand.nextInt(2);
             if (num < 1) {//逃げる
@@ -106,30 +120,37 @@ public class MonsterBattle {
             case ESCAPE_SUCCESSFUL://逃げるが成功した時
                 return BattleResult.ESCAPE_SUCCESSFUL;
 
-            default:
-                throw new IllegalArgumentException("無効な戦闘結果が渡されました: " + status);
         }
+        throw new IllegalArgumentException("無効な戦闘結果が渡されました: " + status);
     }
 
     //敵モンスターのターンでの行動
-    public void enemyMonsterTurn() {
-        System.out.println("敵のターン");
+    public String enemyMonsterTurn() {
+        String result = "";
+        result += "敵のターン\n";
         attackEnemyMonster();
-        System.out.println(this.myMonster.getName() + "は" + enemyMonster.getWaza().getDamage() + "ダメージを受けました");
+        result += this.myMonster.getName() + "は" + enemyMonster.getWaza().getDamage() + "ダメージを受けました\n";
+        return result;
     }
 
     //味方モンスターのステータスを返すメソッド
-    public void mymonsterStatus() {
-        System.out.println(this.myMonster.getName() + "のHP：" + this.myMonsterHp);
+    public String myMonsterStatus() {
+        String result = "";
+        result += this.myMonster.getName() + "のHP：" + this.myMonsterHp;
+        return result;
     }
 
     //敵モンスターのステータスを返すメソッド
-    public void enemyMonsterStatus() {
-        System.out.println(this.enemyMonster.getName() + "：のHP：" + this.enemyMonsterHp);
+    public String enemyMonsterStatus() {
+        String result = "";
+        result += this.enemyMonster.getName() + "のHP：" + this.enemyMonsterHp;
+        return result;
     }
 
-    public void monsterStatus() {
-        mymonsterStatus();
-        enemyMonsterStatus();
+    public String monsterStatus() {
+        String result = "";
+        result += myMonsterStatus() + "\n";
+        result += enemyMonsterStatus() + "\n";
+        return result;
     }
 }
