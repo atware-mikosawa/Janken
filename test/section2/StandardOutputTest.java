@@ -8,24 +8,25 @@ import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MainTest {
-  StandardOutputStream standard = new MainTest.StandardOutputStream();
+public class StandardOutputTest {
+  StandardOutputStream standard = new StandardOutputTest.StandardOutputStream();
 
     @BeforeEach
     void setUp() {//共通部分
         System.setOut(standard);//標準出力されるものを、standardに書き換える
     }
     @Test
-    void コンソールの1行目にHelloWorldが表示されること() {
+    void コンソールの1行目に1行目に野生モンスターの名前が出ること() {
         //オブジェクト生成
         MonsterBattle.main();
         //期待値
-        String expected = "HelloWorld";
+        String expected = "あっ！ やせいの フシギダネ が とびだしてきた！";
         //実測値
         String actual = standard.readLine();
         // 比較
         assertEquals(expected, actual);
     }
+
 
     public class StandardOutputStream extends PrintStream {
         private BufferedReader br = new BufferedReader(new StringReader(""));//StringReaderで文字列に変換している？
