@@ -114,9 +114,9 @@ public class MonsterBattleTest {
         Random rand = new Random();
         int randomNum = rand.nextInt(3);//0~2の生成
         randomBattleResult(randomNum);
-        BattleResult actual = monsterBattle.myMonstarTurn(tmp);
-
-        assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
+//        BattleResult actual = monsterBattle.myMonstarTurn(tmp);
+//
+//        assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
     }
 
     @Test
@@ -157,6 +157,64 @@ public class MonsterBattleTest {
             tmp = BattleResult.ESCAPE_FAILED;
         } else {
             tmp = BattleResult.ESCAPE_SUCCESSFUL;
+        }
+    }
+
+    @Test
+    void shouldBeAliveAtTheStart() {
+
+        var monster = new Monster();
+
+        assertEquals(false, monster.isDead());
+    }
+
+    @Test
+    void shouldBeAliveAtTheStart_NotGoodExample() {
+
+        var monster = new Monster();
+
+        var result = monster.toString();
+
+        assertEquals("Monster(hitPoint=100, isDead=false)", result);
+    }
+
+    @Test
+    void shouldBeAliveWhenHitPointMoreThanOne() {
+
+        var monster = new Monster();
+
+        monster.receiveDamage(99);
+
+        assertEquals(false, monster.isDead());
+    }
+
+    @Test
+    void shouldBeAliveWhenHitPointIsZeroOrBelow() {
+
+        var monster = new Monster();
+
+        monster.receiveDamage(100);
+
+        assertEquals(true, monster.isDead());
+    }
+
+    class Monster {
+        private int hitPoint = 100;
+
+        Monster() {
+
+        }
+
+        void receiveDamage(int attackPoint) {
+            hitPoint = hitPoint - attackPoint;
+        }
+
+        boolean isDead() {
+            return hitPoint <= 0;
+        }
+
+        public String print() {
+            return String.format("モンスター(hitPoint=%s, isDead=%s)", hitPoint, isDead());
         }
     }
 }

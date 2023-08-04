@@ -106,20 +106,17 @@ public class MonsterBattle {
     }
 
     //BattleResult型を受け取って、それに対応する処理を返すメソッドを作成
-    public BattleResult myMonstarTurn(BattleResult status) {
+    public void myMonstarTurn(BattleResult status) {
         switch (status) {
-            case BATTLE://BATTLEの時
+            case BATTLE -> {//BATTLEの時
                 attackMyMonster();
                 System.out.println("敵に" + myMonster.getWaza().getDamage() + "ダメージを与えました");
-                return BattleResult.BATTLE;
-
-            case ESCAPE_FAILED://逃げるが失敗した時
+            }
+            case ESCAPE_FAILED -> {//逃げるが失敗した時
                 System.out.println("逃げきれませんでした");
-                return BattleResult.ESCAPE_FAILED;
-
-            case ESCAPE_SUCCESSFUL://逃げるが成功した時
-                return BattleResult.ESCAPE_SUCCESSFUL;
-
+            }
+            case ESCAPE_SUCCESSFUL -> {//逃げるが成功した時
+            }
         }
         throw new IllegalArgumentException("無効な戦闘結果が渡されました: " + status);
     }
