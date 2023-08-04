@@ -14,7 +14,7 @@ public class Main {
 
             //味方のターン
             BattleResult battleStatus = monsterBattle.selectBattle(inputNum);
-            monsterBattle.myMonstarTurn(battleStatus);
+            monsterBattle.myMonsterTurn(battleStatus);
             if (battleStatus == BattleResult.ESCAPE_SUCCESSFUL) {
                 break;
             }
