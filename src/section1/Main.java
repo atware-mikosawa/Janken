@@ -30,7 +30,7 @@ public class Main {
             }
 
             //敵のターン
-            System.out.println(monsterBattle.displayMessageBeforeBattle());
+            System.out.println(monsterBattle.displayEnemyMonsterTurn());
             String displayMonsterStatus2 = monsterBattle.monsterStatus();
             System.out.println(displayMonsterStatus2);
 
