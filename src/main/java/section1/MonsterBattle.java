@@ -28,7 +28,7 @@ public class MonsterBattle {
     }
 
 
-    private void attackMyMonster() {
+    public void attackMyMonster() {
         enemyMonsterHp = enemyMonsterHp - myMonster.getWaza().getDamage();
         //ここのテストをしたくてモックをしたいけど、定数がintになっているからわからない
     }
@@ -118,19 +118,16 @@ public class MonsterBattle {
     }
 
     //BattleResult型を受け取って、それに対応する処理を返すメソッドを作成
-    public boolean myMonsterTurn(BattleResult status) {
+    public void myMonsterTurn(BattleResult status) {
         switch (status) {
             case BATTLE -> {//BATTLEの時
                 attackMyMonster();
                 System.out.println(displayBattleMyMonsterTurn(myMonster.getWaza().getDamage()));
-                return false;
             }
             case ESCAPE_FAILED -> {//逃げるが失敗した時
                 System.out.println(displayEscapeFailedMyMonsterTurn());
-                return false;
             }
             case ESCAPE_SUCCESSFUL -> {//逃げるが成功した時
-                return true;
             }
             default -> throw new IllegalArgumentException("無効な戦闘結果が渡されました: " + status);
         }

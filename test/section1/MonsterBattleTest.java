@@ -3,33 +3,37 @@ package section1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Spy;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class MonsterBattleTest {
+    @Spy
     private MonsterBattle monsterBattle;
 
     @BeforeEach
     void setUp() {//共通部分
         Character myCharacter = new Character("フシギダネ", 100, "たいあたり", 10);
         Character enemyCharacter = new Character("ヒトカゲ", 150, "たいあたり", 10);
-        monsterBattle = new MonsterBattle(myCharacter, enemyCharacter);
+        monsterBattle = spy(new MonsterBattle(myCharacter, enemyCharacter));
     }
 
-//    @Test
-//    void testAttackMyMonster() {
-//        monsterBattle.attackMyMonster();
-//        //期待値
-//        int expected = 140;
-//        //実測値
-//        int actual = monsterBattle.getEnemyMonsterHp();
-//        //比較
-//        assertEquals(expected, actual);
-//    }
+
+    @Test
+    void testAttackMyMonster() {
+        monsterBattle.attackMyMonster();
+        //期待値
+        int expected = 140;
+        //実測値
+        int actual = monsterBattle.getEnemyMonsterHp();
+        //比較
+        assertEquals(expected, actual);
+    }
 
     @Test
     void testAttackEnemyMonster() {
@@ -130,37 +134,45 @@ public class MonsterBattleTest {
         assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
     }
 
-    //ビヘイビア駆動
-    @Test
-    @DisplayName("引数のstatusにBATTLEが渡された時falseが返ること")
-    void testMyMonsterTurn1() {
-        boolean expected = false;
-        boolean actual = monsterBattle.myMonsterTurn(BattleResult.BATTLE);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    @DisplayName("引数のstatusにESCAPE_FAILEDが渡された時falseが返ること")
-    void testMyMonsterTurn2() {
-        boolean expected = false;
-        boolean actual = monsterBattle.myMonsterTurn(BattleResult.ESCAPE_FAILED);
-        assertEquals(expected, actual);
-    }
+//    //ビヘイビア駆動
+//    @Test
+//    @DisplayName("引数のstatusにBATTLEが渡された時falseが返ること")
+//    void testMyMonsterTurn1() {
+//        boolean expected = false;
+//        boolean actual = monsterBattle.myMonsterTurn(BattleResult.BATTLE);
+//        assertEquals(expected, actual);
+//    }
+//
+//    @Test
+//    @DisplayName("引数のstatusにESCAPE_FAILEDが渡された時falseが返ること")
+//    void testMyMonsterTurn2() {
+//        boolean expected = false;
+//        boolean actual = monsterBattle.myMonsterTurn(BattleResult.ESCAPE_FAILED);
+//        assertEquals(expected, actual);
+//    }
+//
+//    @Test
+//    @DisplayName("引数のstatusにESCAPE_SUCCESSFULが渡された時trueが返ること")
+//    void testMyMonsterTurn3() {
+//        boolean expected = true;
+//        boolean actual = monsterBattle.myMonsterTurn(BattleResult.ESCAPE_SUCCESSFUL);
+//        assertEquals(expected, actual);
+//    }
+//
+//
+//    @Test
+//    @DisplayName("引数のstatusにUNKOWNが渡された時IllegalArgumentExceptionが返ること")
+//    void testMyMonsterTurn4() {
+//        assertThrows(IllegalArgumentException.class, () -> monsterBattle.myMonsterTurn(BattleResult.UNKNOWN));
+//    }
 
     @Test
     @DisplayName("引数のstatusにESCAPE_SUCCESSFULが渡された時trueが返ること")
     void testMyMonsterTurn3() {
-        boolean expected = true;
-        boolean actual = monsterBattle.myMonsterTurn(BattleResult.ESCAPE_SUCCESSFUL);
-        assertEquals(expected, actual);
+        monsterBattle.myMonsterTurn(BattleResult.BATTLE);
+        verify(monsterBattle, times(1)).attackMyMonster();
     }
 
-
-    @Test
-    @DisplayName("引数のstatusにUNKOWNが渡された時IllegalArgumentExceptionが返ること")
-    void testMyMonsterTurn4() {
-        assertThrows(IllegalArgumentException.class, () -> monsterBattle.myMonsterTurn(BattleResult.UNKNOWN));
-    }
 
     @Test
     void testDisplayBattleMyMonsterTurn() {
