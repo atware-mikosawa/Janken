@@ -33,10 +33,14 @@ public class MonsterBattle {
     }
 
     public void attackEnemyMonster() {
-        System.out.println("敵のキャラクターのダメージ" + enemyMonster.getWaza().getDamage());
         myMonsterHp = myMonsterHp - enemyMonster.getWaza().getDamage();
     }
 
+    public String displayAttackEnemyMonster(int damage) {
+        String result = "";
+        result += "敵のキャラクターのダメージ" + damage + "\n";
+        return result;
+    }
 
     public boolean judgeBattle(int hpState) {
         if (hpState <= 0) {
@@ -71,11 +75,18 @@ public class MonsterBattle {
         return result;
     }
 
+    public String displayMessageBeforeBattle() {
+        String result = """
+                自分のターン
+                1か2かを入力してください
+                1：たたかう 2：逃げる
+                """;
+        return result;
+    }
+
     //標準入力を受け取るメソッドを作成
     public int receiveNum() {
-        System.out.println("自分のターン");
-        System.out.println("1か2かを入力してください");
-        System.out.println("1：たたかう" + " " + "2：逃げる\n");
+        System.out.println(displayMessageBeforeBattle());
         Scanner sc = new Scanner(System.in);
         int test = 0;
 
@@ -110,22 +121,35 @@ public class MonsterBattle {
         switch (status) {
             case BATTLE -> {//BATTLEの時
                 attackMyMonster();
-                System.out.println("敵に" + myMonster.getWaza().getDamage() + "ダメージを与えました");
+                System.out.println(displayBattleMyMonsterTurn(myMonster.getWaza().getDamage()));
             }
             case ESCAPE_FAILED -> {//逃げるが失敗した時
-                System.out.println("逃げきれませんでした");
+                System.out.println(displayEscapeFailedMyMonsterTurn());
             }
             case ESCAPE_SUCCESSFUL -> {//逃げるが成功した時
             }
+            default -> throw new IllegalArgumentException("無効な戦闘結果が渡されました: " + status);
         }
-        throw new IllegalArgumentException("無効な戦闘結果が渡されました: " + status);
+    }
+
+    public String displayBattleMyMonsterTurn(int damageDealt) {
+        String result = "";
+        result += "敵に" + damageDealt + "ダメージを与えました";
+        return result;
+    }
+
+    public String displayEscapeFailedMyMonsterTurn() {
+        String result = "";
+        result += "逃げきれませんでした";
+        return result;
     }
 
     //敵モンスターのターンでの行動
-    public String enemyMonsterTurn() {
+    public String displayEnemyMonsterTurn() {
         String result = "";
         result += "敵のターン\n";
         attackEnemyMonster();
+        result += displayAttackEnemyMonster(enemyMonster.getWaza().getDamage());
         result += this.myMonster.getName() + "は" + enemyMonster.getWaza().getDamage() + "ダメージを受けました\n";
         return result;
     }

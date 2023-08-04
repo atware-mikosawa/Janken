@@ -3,6 +3,8 @@ package section1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,6 +44,17 @@ public class MonsterBattleTest {
     }
 
     @Test
+    void testDisplayAttackEnemyMonster() {
+        int tmpDamege = 10;
+        //期待値
+        String expected = "敵のキャラクターのダメージ" + tmpDamege + "\n";
+        //実測値
+        String actual = monsterBattle.displayAttackEnemyMonster(tmpDamege);
+        //比較
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void testJudgeBattle() {
         //期待値
         boolean expected = false;
@@ -75,20 +88,34 @@ public class MonsterBattleTest {
         assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual) || ecpected4.equals(actual));
     }
 
-//    @Test
-//    void receiveNum() {
-//        //オブジェクト生成
-//        Character myCharacter = new Character("フシギダネ", 100, "たいあたり", 10);
-//        Character enemyCharacter = new Character("ヒトカゲ", 150, "たいあたり", 10);
-//        MonsterBattle monsterBattle = new MonsterBattle(myCharacter, enemyCharacter);
-//        //期待値
-//        int expected1 = 1;
-//        int expected2 = 2;
-//        //実測値
-//        int actual = monsterBattle.receiveNum();
-//        //比較
-//        assertTrue(expected1 == actual || expected2 == actual);
-//    }
+    @Test
+    void testDisplayMessageBeforeBattle() {
+        //期待値
+        String expected = """
+                自分のターン
+                1か2かを入力してください
+                1：たたかう 2：逃げる
+                """;
+        //実測値
+        String actual = monsterBattle.displayMessageBeforeBattle();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void receiveNum() {
+        //オブジェクト生成
+        String inputNum = "1";
+        InputStream originalSystemIn = new ByteArrayInputStream(inputNum.getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream(inputNum.getBytes());
+        System.setIn(in);
+        //期待値
+        int expected = 1;
+        //実測値
+        int actual = monsterBattle.receiveNum();
+        //比較
+        System.setIn(originalSystemIn);
+        assertEquals(expected, actual);
+    }
 
     @Test
     void testSelectBattle() {
@@ -104,30 +131,47 @@ public class MonsterBattleTest {
         assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
     }
 
-    @Test
-    void testMyMonsterTurn() {
-        //期待値
-        BattleResult expected1 = BattleResult.BATTLE;
-        BattleResult expected2 = BattleResult.ESCAPE_FAILED;
-        BattleResult expected3 = BattleResult.ESCAPE_SUCCESSFUL;
-        //実測値
-        Random rand = new Random();
-        int randomNum = rand.nextInt(3);//0~2の生成
-        randomBattleResult(randomNum);
+//    @Test
+//    void testMyMonsterTurn() {
+//        //期待値
+//        BattleResult expected1 = BattleResult.BATTLE;
+//        BattleResult expected2 = BattleResult.ESCAPE_FAILED;
+//        BattleResult expected3 = BattleResult.ESCAPE_SUCCESSFUL;
+//        //実測値
+//        Random rand = new Random();
+//        int randomNum = rand.nextInt(3);//0~2の生成
+//        randomBattleResult(randomNum);
 //        BattleResult actual = monsterBattle.myMonstarTurn(tmp);
 //
 //        assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
+//    }
+
+    @Test
+    void testDisplayBattleMyMonsterTurn() {
+        Character character = new Character("ゼニガメ", 100, "たいあたり", 20);
+        String expected = "敵に20ダメージを与えました";
+        int wazaDamage = character.getWaza().getDamage();
+        String actual = monsterBattle.displayBattleMyMonsterTurn(wazaDamage);
+        assertEquals(expected, actual);
     }
 
     @Test
-    void testEnemyMonsterTurn() {
+    void testDisplayEscapeFailedMyMonsterTurn() {
+        String expected = "逃げきれませんでした";
+        String actual = monsterBattle.displayEscapeFailedMyMonsterTurn();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testDisplayEnemyMonsterTurn() {
         //期待値
         String expected = """
                 敵のターン
+                敵のキャラクターのダメージ10
                 フシギダネは10ダメージを受けました
                 """;
         //実測値
-        String actual = monsterBattle.enemyMonsterTurn();
+        String actual = monsterBattle.displayEnemyMonsterTurn();
         //比較
         assertEquals(expected, actual);
     }
@@ -168,15 +212,6 @@ public class MonsterBattleTest {
         assertEquals(false, monster.isDead());
     }
 
-    @Test
-    void shouldBeAliveAtTheStart_NotGoodExample() {
-
-        var monster = new Monster();
-
-        var result = monster.toString();
-
-        assertEquals("Monster(hitPoint=100, isDead=false)", result);
-    }
 
     @Test
     void shouldBeAliveWhenHitPointMoreThanOne() {
