@@ -160,7 +160,6 @@ public class MonsterBattleTest {
     @DisplayName("引数のstatusにUNKOWNが渡された時IllegalArgumentExceptionが返ること")
     void testMyMonsterTurn4() {
         assertThrows(IllegalArgumentException.class, () -> monsterBattle.myMonsterTurn(BattleResult.UNKNOWN));
-        //第３引数は何を比較するか
     }
 
     @Test
