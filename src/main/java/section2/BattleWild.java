@@ -44,14 +44,11 @@ class BattleWild {
             //互いのステータスを表示
             System.out.println(printBattle.displayEnemyMonsterStatus(enemy.getStatus()));
             System.out.println(printBattle.displayMyMonsterStatus(myMonster.getStatus()));
+            System.out.println();
             break;
         }
 
 
-//            System.out.println("こちら：" + myMonster.getStatus());
-//
-//            //getCmdメソッドからコマンドを受け取る
-//            System.out.println("");
 //            cmd = getCmd(myMonster.getName());
 //
 //            //先攻・後攻を決定する
@@ -170,7 +167,7 @@ class BattleWild {
 
     //戦闘コマンドを受け付ける
     //※内部的に使うメソッドなのでprivate設定にする
-    private String getCmd(String monsterName) {
+    public String getCmd(String monsterName) {
         BufferedReader br = null;
         String cmdin = null;
 
@@ -178,10 +175,8 @@ class BattleWild {
             br = new BufferedReader(new InputStreamReader(System.in));
 
             do {
-                //
-                prinTextAsGame(monsterName + "は どうする？");
-                System.out.println("1:たたかう 2:にげる");
-                System.out.println("▼");
+                System.out.println(printBattle.displayMessageBeforeBattle(monsterName));
+                System.out.println(printBattle.displayPauseMessage());
                 cmdin = br.readLine();
 
                 if (!(cmdin.equals("1") || cmdin.equals("2"))) {

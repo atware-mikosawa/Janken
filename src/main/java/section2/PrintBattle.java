@@ -32,6 +32,13 @@ public class PrintBattle {
         return result;
     }
 
+    public String displayMessageBeforeBattle(String monsterName) {
+        String result = "";
+        result += monsterName + "は どうする？" + "\n";
+        result += "1:たたかう 2:にげる";
+        return result;
+    }
+
     public String displayPauseMessage() {
         return "▼";
     }

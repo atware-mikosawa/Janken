@@ -52,6 +52,15 @@ public class PrintBattleTest {
     void testDisplayMyMonsterStatus() {
         String expected = "こちら：フシギダネのステータス";
         String actual = printBattle.displayMyMonsterStatus("フシギダネのステータス");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testDisplayMessageBeforeBattle() {
+        String expected = """
+                ヒトカゲは どうする？
+                1:たたかう 2:にげる""";
+        String actual = printBattle.displayMessageBeforeBattle("ヒトカゲ");
         assertEquals(expected,actual);
     }
 
