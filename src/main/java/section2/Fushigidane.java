@@ -1,6 +1,6 @@
 package section2;
 
-public class Fushigidane extends Monster3 {
+public class Fushigidane extends Monster {
 
 
     Fushigidane() {

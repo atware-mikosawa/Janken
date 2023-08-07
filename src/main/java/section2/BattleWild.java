@@ -3,6 +3,8 @@ package section2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 class BattleWild {
 
@@ -14,12 +16,12 @@ class BattleWild {
     public void mainBattle() {
 
         //バトル相手をインスタンス化
-        Fushigidane enemy = new Fushigidane("やせい", "フシギダネ", 20);
+        Monster enemy = new Monster("やせい", "フシギダネ", 20);
         prinTextAsGame(printBattle.messageWhenEnemyMonsterAppears(enemy.getName()));
         prinTextAsGame(printBattle.displayPauseMessage());
 
         //自分のモンスターをインスタンス化
-        Hitokage myMonster = new Hitokage("ぼく", "カケ郎", 21);
+        Monster myMonster = new Monster("ぼく", "カケ郎", 21);
         prinTextAsGame(printBattle.messageWhenMyMonsterAppears(myMonster.getName()));
         prinTextAsGame(printBattle.displayPauseMessage());
 
@@ -28,8 +30,6 @@ class BattleWild {
         boolean escapeFlg = false;   //逃走フラグ（初期値false）
         int turn = 0;                    //ターン数（初期値0）
         int dmg;                         //与えるダメージ
-        String cmd;
-        boolean firstAtkFlg;           //先攻フラグ
 
         //どちらかのHPゼロになるか「にげる」が成功するまでバトルを繰り返す
         while (myMonster.getHp() > 0 && enemy.getHp() > 0) {
@@ -39,26 +39,28 @@ class BattleWild {
 //            dmg = 0;
 //            cmd = null;
 //            firstAtkFlg = true;  //先攻フラグ（初期値true）
+            String tmpMonsterName = "";
             System.out.println(printBattle.displayOfTurns(turn));
 
             //互いのステータスを表示
             System.out.println(printBattle.displayEnemyMonsterStatus(enemy.getStatus()));
             System.out.println(printBattle.displayMyMonsterStatus(myMonster.getStatus()));
             System.out.println();
+
+            //先行後攻の決定
+            boolean firstAtkFlg = decideWhoAttackFirstAndSecond(myMonster.getSpd(), enemy.getSpd());
+            //マイモンスターが先行の場合、コマンド入力して攻撃、そうでない場合相手の攻撃
+            if (firstAtkFlg == true) {
+                int cmd = receiveNum();
+                getCmd(myMonster.getName());
+            }else {//ダメージを受けるメソッド
+
+            }
+
             break;
         }
 
 
-//            cmd = getCmd(myMonster.getName());
-//
-//            //先攻・後攻を決定する
-//            if (myMonster.getSpd() < enemy.getSpd()) {
-//                //相手のモンスターとスピードを比較し、相手が速ければ先攻フラグをfalseに変える
-//                firstAtkFlg = false;
-//            } else if (myMonster.getSpd() == enemy.getSpd()) {
-//                //スピードが全く同じであれば50%の確率で先攻フラグをfalseに変える
-//                firstAtkFlg = judgeFiftyFifty();
-//            }
 //
 //            if (firstAtkFlg) {
 //                //自分のモンスターが先攻の場合
@@ -165,30 +167,43 @@ class BattleWild {
 //        System.out.println("（バトル終了）");
     }
 
+    public boolean decideWhoAttackFirstAndSecond(int myMonsterSpd, int enemySpd) {
+        boolean firstAtkFlg;
+        //先攻・後攻を決定する
+        if (myMonsterSpd < enemySpd) {
+            //相手のモンスターとスピードを比較し、相手が速ければ先攻フラグをfalseに変える
+            return false;
+        } else if (myMonsterSpd == enemySpd) {
+            //スピードが全く同じであれば50%の確率で先攻フラグをfalseに変える
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     //戦闘コマンドを受け付ける
-    //※内部的に使うメソッドなのでprivate設定にする
-    public String getCmd(String monsterName) {
-        BufferedReader br = null;
-        String cmdin = null;
+    public int getCmd(String monsterName) {
+        System.out.println(printBattle.displayMessageBeforeBattle(monsterName));
+        System.out.println(printBattle.displayPauseMessage());
+        int inputNum = receiveNum();
+        if ((inputNum == 1) || (inputNum == 2)) {
+            return inputNum;
+        } else {
+            System.out.println("[INFO]コマンドが不正です。再入力してください。");
+            return -1;
+        }
+    }
+
+    public int receiveNum() {
+        Scanner sc = new Scanner(System.in);
+        int tmp = 0;
 
         try {
-            br = new BufferedReader(new InputStreamReader(System.in));
-
-            do {
-                System.out.println(printBattle.displayMessageBeforeBattle(monsterName));
-                System.out.println(printBattle.displayPauseMessage());
-                cmdin = br.readLine();
-
-                if (!(cmdin.equals("1") || cmdin.equals("2"))) {
-                    System.out.println("[INFO]コマンドが不正です。再入力してください。");
-                }
-            } while (!(cmdin.equals("1") || cmdin.equals("2")));
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            tmp = sc.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("入力する値が不正です");
         }
-
-        return cmdin;
+        return tmp;
     }
 
     //何かしらの入力があるまで待機する
@@ -229,7 +244,7 @@ class BattleWild {
 
     //50%の確率でtrueを返す（すばやさが同じだった場合にどちらを先攻とするか決める際に使用）
     //※内部的に使うメソッドなのでprivate設定にする
-    private boolean judgeFiftyFifty() {
+    public boolean judgeFiftyFifty() {
         boolean judge = true;
 
         //0か1をランダムで取得

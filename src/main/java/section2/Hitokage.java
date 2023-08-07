@@ -1,6 +1,6 @@
 package section2;
 
-public class Hitokage extends Monster3 {
+public class Hitokage extends Monster {
     Hitokage() {
         super.setCharacter("ヒトカゲ");
     }

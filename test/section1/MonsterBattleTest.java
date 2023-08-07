@@ -26,6 +26,7 @@ public class MonsterBattleTest {
     }
 
 
+    //hamcrest
     @Test
     void testAttackMyMonster() {
         monsterBattle.attackMyMonster();
@@ -80,7 +81,7 @@ public class MonsterBattleTest {
         assertEquals(expected, actual);
     }
 
-
+    //hamcrest
     @Test
     void testDisplayBattleResult() {
         //期待値
@@ -89,16 +90,11 @@ public class MonsterBattleTest {
         //比較
 //        assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual) || ecpected4.equals(actual));
 
-        String expected1 = "バトルから逃";
         assertThat(actual, is(anyOf(
-                equalTo(expected1),
-                equalTo(getWinnerIsMymonstera()),
-                equalTo("winner is ennemymonstera"),
-                equalTo("正しく戦闘が終了できませんでしたa"))));
-    }
-
-    private static String getWinnerIsMymonstera() {
-        return "winner is mymonstera";
+                equalTo("バトルから逃げました"),
+                equalTo("winner is mymonster"),
+                equalTo("winner is ennemymonster"),
+                equalTo("正しく戦闘が終了できませんでした"))));
     }
 
     @Test
@@ -209,8 +205,8 @@ public class MonsterBattleTest {
                 フシギダネは10ダメージを受けました
                 """;
         //実測値
-        String actual = monsterBattle.displayEnemyMonsterTurn();
         //比較
+        String actual = monsterBattle.displayEnemyMonsterTurn();
         assertEquals(expected, actual);
     }
 

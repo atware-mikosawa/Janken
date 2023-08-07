@@ -3,7 +3,7 @@ package section2;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Monster3 {
+public class Monster {
     private String character;
     private String trainer;
     private String name;
@@ -19,7 +19,7 @@ public class Monster3 {
     final String dmgCorection120 = "120";
     final String dmgCorection1 = "1";
 
-    Monster3() {
+    Monster() {
         character = "unknown";
         trainer = "wild";
         name = "noname";
@@ -33,13 +33,13 @@ public class Monster3 {
         wazaDmgRate = "1.0";
     }
 
-    Monster3(String trainer, String name) {
+    Monster(String trainer, String name) {
         this();
         this.trainer = trainer;
         this.name = name;
     }
 
-    Monster3(String trainer, String name, int lv) {
+    Monster(String trainer, String name, int lv) {
         this(trainer, name);
         if (lv > 1) {//レベルが1以上だと全てのステータスが変わってくる
             levelUp(lv - 1 );

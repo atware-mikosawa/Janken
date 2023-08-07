@@ -3,33 +3,33 @@ package section2;
 import java.math.BigDecimal;
 
 public class Monster2 {
-    public String character;
-    public String trainer;
-    public String name;
-    public int lv;
-    public int hp;
-    public int atk;
-    public int def;
-    public int spd;
-    public int hpMax;
-    public String wazaNm;
-    public String wazaDmgRate;
+    private String character;
+    private String trainer;
+    private String name;
+    private int lv;
+    private int hp;
+    private int atk;
+    private int def;
+    private int spd;
+    private int hpMax;
+    private String wazaNm;
+    private String wazaDmgRate;
 
     final String dmgCorection120 = "120";
     final String dmgCorection1 = "1";
 
     Monster2() {
-        character = "unknown";
-        trainer = "wild";
-        name = "noname";
-        lv = 1;
-        hp = 80;
-        atk = 15;
-        def = 10;
-        spd = 10;
-        hpMax = 80;
-        wazaNm = "たいあたり";
-        wazaDmgRate = "1.0";
+        this.character = "unknown";
+        this.trainer = "wild";
+        this.name = "noname";
+        this.lv = 1;
+        this.hp = 80;
+        this.atk = 15;
+        this.def = 10;
+        this.spd = 10;
+        this.hpMax = 80;
+        this.wazaNm = "たいあたり";
+        this.wazaDmgRate = "1.0";
     }
 
     Monster2(String trainer, String name) {
@@ -43,6 +43,10 @@ public class Monster2 {
         if (lv > 1) {//レベルが1以上だと全てのステータスが変わってくる
             levelUp(lv - 1 );
         }
+    }
+
+    public String getCharacter(){
+        return this.character;
     }
 
     @Override
