@@ -9,6 +9,8 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Random;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -32,7 +34,8 @@ public class MonsterBattleTest {
         //実測値
         int actual = monsterBattle.getEnemyMonsterHp();
         //比較
-        assertEquals(expected, actual);
+//        assertEquals(expected, actual);
+        assertThat(actual, is(expected));
     }
 
     @Test
@@ -81,14 +84,21 @@ public class MonsterBattleTest {
     @Test
     void testDisplayBattleResult() {
         //期待値
-        String expected1 = "バトルから逃げました";
-        String expected2 = "winner is mymonster";
-        String expected3 = "winner is ennemymonster";
-        String ecpected4 = "正しく戦闘が終了できませんでした";
         //実測値
         String actual = String.valueOf(monsterBattle.displayBattleResult());
         //比較
-        assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual) || ecpected4.equals(actual));
+//        assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual) || ecpected4.equals(actual));
+
+        String expected1 = "バトルから逃";
+        assertThat(actual, is(anyOf(
+                equalTo(expected1),
+                equalTo(getWinnerIsMymonstera()),
+                equalTo("winner is ennemymonstera"),
+                equalTo("正しく戦闘が終了できませんでしたa"))));
+    }
+
+    private static String getWinnerIsMymonstera() {
+        return "winner is mymonstera";
     }
 
     @Test
