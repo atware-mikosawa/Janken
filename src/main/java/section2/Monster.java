@@ -46,6 +46,25 @@ public class Monster {
         }
     }
 
+    Monster(String trainer, String name, int lv, String wazaNm) {
+        this(trainer, name, lv);
+        setWazaNm(wazaNm);
+        if (lv > 1) {//レベルが1以上だと全てのステータスが変わってくる
+            levelUp(lv - 1);
+        }
+    }
+
+    Monster(String character, String trainer, String name, int lv, String wazaNm) {
+        this();
+        this.character = character;
+        this.trainer = trainer;
+        this.name = name;
+        this.wazaNm = wazaNm;
+        if (lv > 1) {//レベルが1以上だと全てのステータスが変わってくる
+            levelUp(lv - 1);
+        }
+    }
+
     public void setCharacter(String character) {
         this.character = character;
     }
@@ -136,27 +155,27 @@ public class Monster {
 
     public String monsterStatus(Monster monster) {
         String status
-                = "character：" + monster.getCharacter() + "　"
-                + "trainer："   + monster.getTrainer()   + "　"
-                + "name："      + monster.getName()      + "　"
-                + "lv："        + monster.getLv()        + "　"
-                + "hp："        + monster.getHp()        + "　"
-                + "Atk："       + monster.getAtk()       + "　"
-                + "Def："       + monster.getDef()       + "　"
-                + "spd"         + monster.getSpd()       + "　"
-                + "hpMax："     + monster.getHpMax()     + "　"
-                + "wazaNm"      + monster.getWazaNm()    + "　"
-                + "wazaDmgRate" + monster.getWazaDmgRate();
+                = "ポケモン名：" + monster.getCharacter() + "　"
+                + "ポケモンの所有者：" + monster.getTrainer() + "　"
+                + "名前：" + monster.getName() + "　"
+                + "Lv：" + monster.getLv() + "　"
+                + "Hp：" + monster.getHp() + "　"
+                + "Atk：" + monster.getAtk() + "　"
+                + "Def：" + monster.getDef() + "　"
+                + "Spd" + monster.getSpd() + "　"
+                + "HpMax：" + monster.getHpMax() + "　"
+                + "技の名前：" + monster.getWazaNm() + "　"
+                + "WazaDmgRate：" + monster.getWazaDmgRate();
         return status;
     }
 
     public void levelUp(int risingLevel) {
-        lv = lv + risingLevel;
-        hpMax = hpMax + risingLevel * 30;
-        atk = atk + risingLevel * 5;
-        def = def + risingLevel * 5;
-        spd = spd + risingLevel * 5;
-        hp = hpMax;
+        setLv(lv + risingLevel);
+        setHpMax(hpMax + risingLevel * 30);
+        setAtk(atk + risingLevel * 5);
+        setDef(def + risingLevel * 5);
+        setSpd(spd + risingLevel * 5);
+        setHp(hpMax);
     }
 
     public int wazaDmg(int toAtkDmg, double wazaDmgRate, int defenseRate) {

@@ -12,15 +12,14 @@ class BattleWild {
     final int ESCAPE_SUCCESS_ST_RATE = 50;     //「にげる」成功率の基準値（50%）
 
     public void mainBattle() {
-        boolean winFlg = true;       //勝利フラグ（初期値true）
         boolean escapeFlg = false;   //逃走フラグ（初期値false）
         int combatCommand;           //ユーザーから受け取る戦闘コマンド
         int turn = 0;                //ターン数（初期値0）
         BattleResult battleResult = null;
 
         //モンスターのインスタンス化
-        Monster enemy = new Monster("やせい", "フシギダネ", 30);
-        Monster myMonster = new Monster("ぼく", "カケ郎", 1);
+        Monster enemy = new Zenigame("やせい", "ゼニガメ", 30, "ひっかく");
+        Monster myMonster = new Hitokage("ぼく", "カケ郎", 3, "ひをふく");
 
         int myMonsterHp = myMonster.getHp();
         int enemyMonsterHp = enemy.getHp();
@@ -85,7 +84,7 @@ class BattleWild {
                     prinTextAsGame(printBattle.displayWazaName(enemy.getName(), enemy.getWazaNm()));
                     prinTextAsGame(printBattle.displayDmgDealt(myMonster.getName(), dmgDealt));
                     if (myMonsterHp < 0) {
-                        winFlg = false;
+                        battleResult = BattleResult.LOSE;
                     }
                 } else {
                     battleResult = BattleResult.WIN;
