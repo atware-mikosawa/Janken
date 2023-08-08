@@ -35,7 +35,6 @@ public class MonsterBattleTest {
         //実測値
         int actual = monsterBattle.getEnemyMonsterHp();
         //比較
-//        assertEquals(expected, actual);
         assertThat(actual, is(expected));
     }
 
@@ -47,7 +46,8 @@ public class MonsterBattleTest {
         //実測値
         int actual = monsterBattle.getMyMonsterHp();
         //比較
-        assertEquals(expected, actual);
+//        assertEquals(expected, actual);
+        assertThat(actual, is(expected));
     }
 
     @Test
@@ -58,8 +58,10 @@ public class MonsterBattleTest {
         //実測値
         String actual = monsterBattle.displayAttackEnemyMonster(tmpDamege);
         //比較
-        assertEquals(expected, actual);
+//        assertEquals(expected, actual);
+        assertThat(actual, is(expected));
     }
+
 
     @Test
     void testJudgeBattle() {
@@ -68,7 +70,8 @@ public class MonsterBattleTest {
         //実測値
         boolean actual = monsterBattle.judgeBattle(monsterBattle.getMyMonsterHp());
         //比較
-        assertEquals(expected, actual);
+//        assertEquals(expected, actual);
+        assertThat(actual, is(expected));
     }
 
     @Test
@@ -78,7 +81,8 @@ public class MonsterBattleTest {
         //実測値
         String actual = monsterBattle.displayJudgeBattle(1);
         //比較
-        assertEquals(expected, actual);
+//        assertEquals(expected, actual);
+        assertThat(actual, is(expected));
     }
 
     //hamcrest
@@ -105,8 +109,10 @@ public class MonsterBattleTest {
                 """;
         //実測値
         String actual = monsterBattle.displayMessageBeforeBattle();
-        assertEquals(expected, actual);
+//        assertEquals(expected, actual);
+        assertThat(actual, is(expected));
     }
+
 
     @Test
     void receiveNum() {
@@ -121,21 +127,21 @@ public class MonsterBattleTest {
         int actual = monsterBattle.receiveNum();
         //比較
         System.setIn(originalSystemIn);
-        assertEquals(expected, actual);
+//        assertEquals(expected, actual);
+        assertThat(actual, is(expected));
     }
 
     @Test
     void testSelectBattle() {
-        //期待値
-        BattleResult expected1 = BattleResult.BATTLE;
-        BattleResult expected2 = BattleResult.ESCAPE_SUCCESSFUL;
-        BattleResult expected3 = BattleResult.ESCAPE_FAILED;
-        //実測値
         Random rand = new Random();
         int randomNum = rand.nextInt(2) + 1;
         BattleResult actual = monsterBattle.selectBattle(randomNum);
-        //比較
-        assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
+//        assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual));
+        assertThat(actual, is(anyOf(
+                equalTo(BattleResult.BATTLE),
+                equalTo(BattleResult.ESCAPE_SUCCESSFUL),
+                equalTo(BattleResult.ESCAPE_FAILED)
+        )));
     }
 
 //    //ビヘイビア駆動

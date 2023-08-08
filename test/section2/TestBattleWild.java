@@ -1,6 +1,7 @@
 package section2;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Spy;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -8,6 +9,7 @@ import java.io.InputStream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class TestBattleWild {
 
@@ -100,17 +102,14 @@ public class TestBattleWild {
         assertThat(actual, is(expected));
     }
 
+    @Spy
+    private Monster sampleMonster;
 
-//    @Test
-//    void testMonsterAttack() {
-//        //オブジェクト生成
-//        Monster monster = new Monster("mikosawa", "フシギダネ", 1);//attack:15 def:10
-//        //期待値
-//        int calSubtraction = 15 / (1 + (10 / 120));
-//        int expected = calSubtraction * 15;
-//        //実測値
-//        int actual = monster.calculationDamaged(monster.getAtk());
-//        //比較
-//        assertThat(actual, is(expected));
-//    }
+    @Test
+    void モンスターのレベルが2以上の時levelupメソッドが呼ばれること() {
+        sampleMonster = spy(new Monster("ぼく", "ヒトカゲ", 2));
+        sampleMonster.levelUp(2);
+        verify(sampleMonster, times(1)).levelUp(2);
+    }
+
 }
