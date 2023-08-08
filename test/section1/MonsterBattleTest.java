@@ -84,8 +84,6 @@ public class MonsterBattleTest {
     //hamcrest
     @Test
     void testDisplayBattleResult() {
-        //期待値
-        //実測値
         String actual = String.valueOf(monsterBattle.displayBattleResult());
         //比較
 //        assertTrue(expected1.equals(actual) || expected2.equals(actual) || expected3.equals(actual) || ecpected4.equals(actual));

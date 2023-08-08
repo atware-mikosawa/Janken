@@ -3,6 +3,8 @@ package section2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PrintBattleTest {
@@ -42,6 +44,13 @@ public class PrintBattleTest {
     }
 
     @Test
+    void testGetStatus() {
+        String expected = "[フシギダネ lv20 HP70/80]";
+        String actual = printBattle.getStatus("フシギダネ", 20, 70, 80);
+        assertThat(actual, is(expected));
+    }
+
+    @Test
     void testDisplayEnemyMonsterStatus() {
         String expected = "あいて：[フシギダネ lv20 HP80/80]";
         String actual = printBattle.displayEnemyMonsterStatus("[フシギダネ lv20 HP80/80]");
@@ -58,10 +67,11 @@ public class PrintBattleTest {
     @Test
     void testDisplayMessageBeforeBattle() {
         String expected = """
+                ヒトカゲのターン
                 ヒトカゲは どうする？
                 1:たたかう 2:にげる""";
         String actual = printBattle.displayMessageBeforeBattle("ヒトカゲ");
-        assertEquals(expected,actual);
+        assertThat(actual, is(expected));
     }
 
     @Test

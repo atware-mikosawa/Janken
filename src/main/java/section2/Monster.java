@@ -14,7 +14,7 @@ public class Monster {
     private int spd;
     private int hpMax;
     private String wazaNm;
-    private String wazaDmgRate;
+    private double wazaDmgRate;
 
     final String dmgCorection120 = "120";
     final String dmgCorection1 = "1";
@@ -30,7 +30,7 @@ public class Monster {
         spd = 10;
         hpMax = 80;
         wazaNm = "たいあたり";
-        wazaDmgRate = "1.0";
+        wazaDmgRate = 1;
     }
 
     Monster(String trainer, String name) {
@@ -42,7 +42,7 @@ public class Monster {
     Monster(String trainer, String name, int lv) {
         this(trainer, name);
         if (lv > 1) {//レベルが1以上だと全てのステータスが変わってくる
-            levelUp(lv - 1 );
+            levelUp(lv - 1);
         }
     }
 
@@ -126,11 +126,11 @@ public class Monster {
         this.wazaNm = wazaNm;
     }
 
-    public String getWazaDmgRate() {
+    public double getWazaDmgRate() {
         return wazaDmgRate;
     }
 
-    public void setWazaDmgRate(String wazaDmgRate) {
+    public void setWazaDmgRate(double wazaDmgRate) {
         this.wazaDmgRate = wazaDmgRate;
     }
 
@@ -149,45 +149,28 @@ public class Monster {
         hp = hpMax;
     }
 
-    public void setWaza(String waza, String wdr) {
-        //引数2のバリデーションチェック
-        String valueCheck = "^[0-9]+\\.[0-9]$";
-        if (wazaDmgRate.matches(valueCheck)) {
-            wazaNm = waza;
-            wazaDmgRate = wdr;
-        } else {        //１のチャックがNGであれば、フィールドは更新せずにエラーメッセージ
-            System.out.println("[ERROR]技の設定に失敗しました");
-        }
-    }
-
-    public String getStatus() {
-        return "[" + name + " lv" + lv + " HP" + hp + "/" + hpMax + "]";
-    }
-
-    public int useWaza() {
-        BigDecimal bdAtk = new BigDecimal(atk);
+    public int wazaDmg(int toAtkDmg, double wazaDmgRate, int defenseRate) {
+        BigDecimal bdAtk = new BigDecimal(toAtkDmg);
         BigDecimal bdDmrt = new BigDecimal(wazaDmgRate);
-        int wazaDmgPoint = bdAtk.multiply(bdDmrt).intValue();
+        BigDecimal bdDefenseRate = new BigDecimal(defenseRate);
+        int wazaDmgPoint = bdAtk.multiply(bdDmrt).subtract(bdDefenseRate).intValue();
+        if (wazaDmgPoint < 0) {
+            wazaDmgPoint = 1;
+        }
         return wazaDmgPoint;
     }
 
-    public int damaged(int dmg) {
-        BigDecimal bgDmg = new BigDecimal(dmg);
+    //受けるダメージの計算
+    public int calculationDamaged(int toAttackDmg) {
+        BigDecimal bgDmg = new BigDecimal(toAttackDmg);
         BigDecimal value1 = new BigDecimal(dmgCorection120);
         BigDecimal value2 = new BigDecimal(dmgCorection1);
-        BigDecimal def1 = new BigDecimal(def);
+        BigDecimal def1 = new BigDecimal(getDef());
 
-//      ダメージ減算率　value2 / (value2 + (def1 / value1))
-        BigDecimal Subtraction = value2.divide(value2.add(def1.divide(value1, 2, RoundingMode.DOWN)),2,RoundingMode.DOWN);
-//      実際に受けるダメージ
+        //ダメージ減算率　value2 / (value2 + (def1 / value1))
+        BigDecimal Subtraction = value2.divide(
+                value2.add(def1.divide(value1, 2, RoundingMode.DOWN)), 2, RoundingMode.DOWN);
         int receiveDamage = bgDmg.multiply(Subtraction).intValue();
-
-        if (hp > receiveDamage) { //HP>ダメージであればダメージを差し引いた値 をHPに代入
-            hp = hp - receiveDamage;
-        } else { //HP<ダメージであればHPに0を代入
-            hp = 0;
-        }
-
         return receiveDamage;
     }
 }

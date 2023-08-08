@@ -20,6 +20,10 @@ public class PrintBattle {
         return result;
     }
 
+    public String getStatus(String monsterName, int monsterLv, int monsterHp, int monsterHpMax) {
+        return "[" + monsterName + " lv" + monsterLv + " HP" + monsterHp + "/" + monsterHpMax + "]";
+    }
+
     public String displayEnemyMonsterStatus(String enemyMonsterStatus) {
         String result = "";
         result += "あいて：" + enemyMonsterStatus;
@@ -34,9 +38,24 @@ public class PrintBattle {
 
     public String displayMessageBeforeBattle(String monsterName) {
         String result = "";
+        result += monsterName + "のターン" + "\n";
         result += monsterName + "は どうする？" + "\n";
         result += "1:たたかう 2:にげる";
         return result;
+    }
+
+    public String displayDmgDealt(String damagedMonsterName, int dmgDealt) {
+        String result = "";
+        result += "  →  " + damagedMonsterName + " は " + dmgDealt + " のダメージ を うけた！";
+        return result;
+    }
+
+    public String displayWazaName(String activeMonster, String wazaName) {
+        return activeMonster + "の " + wazaName + " ！";
+    }
+
+    public String displayWhenRunningAway() {
+        return "にげられない！";
     }
 
     public String displayPauseMessage() {
