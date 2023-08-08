@@ -134,9 +134,19 @@ public class Monster {
         this.wazaDmgRate = wazaDmgRate;
     }
 
-    @Override
-    public String toString() {
-        String status = "character：" + character + "trainer：" + trainer + "name：" + name + "lv：" + lv + "hp：" + hp + "Atk：" + atk + "Def：" + def + "spd" + spd + "hpMax：" + hpMax + "wazaNm" + wazaNm + "wazaDmgRate" + wazaDmgRate;
+    public String monsterStatus(Monster monster) {
+        String status
+                = "character：" + monster.getCharacter() + "　"
+                + "trainer："   + monster.getTrainer()   + "　"
+                + "name："      + monster.getName()      + "　"
+                + "lv："        + monster.getLv()        + "　"
+                + "hp："        + monster.getHp()        + "　"
+                + "Atk："       + monster.getAtk()       + "　"
+                + "Def："       + monster.getDef()       + "　"
+                + "spd"         + monster.getSpd()       + "　"
+                + "hpMax："     + monster.getHpMax()     + "　"
+                + "wazaNm"      + monster.getWazaNm()    + "　"
+                + "wazaDmgRate" + monster.getWazaDmgRate();
         return status;
     }
 

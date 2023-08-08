@@ -19,12 +19,14 @@ class BattleWild {
         BattleResult battleResult = null;
 
         //モンスターのインスタンス化
-        Monster enemy = new Monster("やせい", "フシギダネ", 20);
+        Monster enemy = new Monster("やせい", "フシギダネ", 30);
         Monster myMonster = new Monster("ぼく", "カケ郎", 1);
 
         int myMonsterHp = myMonster.getHp();
         int enemyMonsterHp = enemy.getHp();
 
+        System.out.println(myMonster.monsterStatus(myMonster));
+        System.out.println(enemy.monsterStatus(enemy));
         while (myMonsterHp > 0 && enemyMonsterHp > 0) {
             prinTextAsGame(printBattle.messageWhenEnemyMonsterAppears(enemy.getName()));
             prinTextAsGame(printBattle.displayPauseMessage());
@@ -50,7 +52,6 @@ class BattleWild {
                             myMonsterHp,
                             myMonster.getHpMax()
                     )));
-//            prinTextAsGame();
 
             //先行後攻の決定
             boolean firstAtkFlg = decideWhoAttackFirstAndSecond(myMonster.getSpd(), enemy.getSpd());
@@ -129,15 +130,20 @@ class BattleWild {
 
         prinTextAsGame("（バトル終了）");
         //バトル結果
-        if (battleResult == BattleResult.ESCAPE_SUCCESSFUL) {
-            prinTextAsGame(myMonster.getName() + "はうまく　にげ切れた!");
-        } else if (battleResult == BattleResult.WIN) {
-            prinTextAsGame(enemy.getTrainer() + "の " + enemy.getName() + " は たおれた！");
-            prinTextAsGame(myMonster.getName() + "の勝利！");
-        } else {
-            prinTextAsGame(myMonster.getName() + "の敗北…");
-            prinTextAsGame(myMonster.getTrainer() + "は めのまえが まっくらに なった！");
+        try {
+            if (battleResult == BattleResult.ESCAPE_SUCCESSFUL) {
+                prinTextAsGame(myMonster.getName() + "はうまく　にげ切れた!");
+            } else if (battleResult == BattleResult.WIN) {
+                prinTextAsGame(enemy.getTrainer() + "の " + enemy.getName() + " は たおれた！");
+                prinTextAsGame(myMonster.getName() + "の勝利！");
+            } else {
+                prinTextAsGame(myMonster.getName() + "の敗北…");
+                prinTextAsGame(myMonster.getTrainer() + "は めのまえが まっくらに なった！");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println(e.getMessage());
         }
+
     }
 
 
